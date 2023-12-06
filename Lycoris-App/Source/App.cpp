@@ -3,4 +3,5 @@
 int main()
 {
 	Core::PrintHelloWorld();
+	Core::PrintRenderer();
 }

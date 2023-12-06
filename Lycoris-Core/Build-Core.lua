@@ -9,8 +9,12 @@ project "Lycoris-Core"
 
    includedirs
    {
-      "Source"
+      "Source",
+      "ThirdParty/GLFW/include",
+      "ThirdParty/glad/include"
    }
+
+   links { "ThirdParty/GLFW/lib-vc2022/glfw3" }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
