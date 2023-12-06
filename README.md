@@ -14,4 +14,4 @@ The `Scripts/` directory contains build scripts for Windows and Linux, and the `
 ## License
 - UNLICENSE for this repository (see `UNLICENSE.txt` for more details)
 - Premake is licensed under BSD 3-Clause (see included LICENSE.txt file for more details)
-- Project template used by The Cherno ([Repo] https://github.com/TheCherno/ProjectTemplate)
+- Project template used by The Cherno ([Repo](https://github.com/TheCherno/ProjectTemplate))
