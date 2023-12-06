@@ -1,4 +1,4 @@
-project "Core"
+project "Lycoris-Core"
    kind "StaticLib"
    language "C++"
    cppdialect "C++20"

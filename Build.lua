@@ -10,7 +10,7 @@ workspace "Lycoris Engine"
 
 OutputDir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
 
-group "Core"
+group "Lycoris-Core"
 	include "Lycoris-Core/Build-Core.lua"
 group ""
 

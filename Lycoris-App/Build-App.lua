@@ -1,4 +1,4 @@
-project "App"
+project "Lycoris-App"
    kind "ConsoleApp"
    language "C++"
    cppdialect "C++20"
@@ -12,12 +12,12 @@ project "App"
       "Source",
 
 	  -- Include Core
-	  "../Core/Source"
+	  "../Lycoris-Core/Source"
    }
 
    links
    {
-      "Core"
+      "Lycoris-Core"
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
