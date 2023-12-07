@@ -2,6 +2,5 @@
 
 int main()
 {
-	Core::PrintHelloWorld();
-	Core::PrintRenderer();
+	Core::Initialize();
 }

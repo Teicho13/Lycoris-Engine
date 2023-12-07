@@ -4,15 +4,23 @@
 
 namespace Core {
 
-	void PrintHelloWorld()
+	void Initialize()
 	{
-		std::cout << "Hello World!\n";
+		std::cout << "Booting up Lycoris...!\n";
+		std::cout << "Initializing Window!\n";
+		Lycoris::Renderer::Initialize();
+
+		Update();
 	}
 
-	void PrintRenderer()
+	void Update()
 	{
-		Lycoris::Renderer::Initialise();
-		std::cin.get();
+			
+		while(Lycoris::Window::IsOpen())
+		{
+			Lycoris::Window::PollEvents();
+			Lycoris::Window::Display();
+		}
 	}
 
 }

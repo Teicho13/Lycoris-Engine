@@ -3,7 +3,6 @@
 
 namespace Core {
 
-	void PrintHelloWorld();
-	void PrintRenderer();
-
+	void Initialize();
+	void Update();
 }

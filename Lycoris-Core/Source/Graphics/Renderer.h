@@ -1,4 +1,5 @@
 #pragma once
+#include "Graphics/Window.h"
 
 namespace Lycoris 
 {
@@ -6,7 +7,7 @@ namespace Lycoris
 	class Renderer
 	{
 	public:
-		static void Initialise();
+		static void Initialize();
 		static void Shutdown();
 
 		static void Clear();
