@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
 
@@ -42,6 +43,13 @@ namespace Lycoris
 		}
 
 		glfwMakeContextCurrent(g_Window);
+
+
+
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		{
+			return -1;
+		}
 
 		return 0;
 	}

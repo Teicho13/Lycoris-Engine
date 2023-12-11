@@ -15,9 +15,12 @@ project "Lycoris-App"
 	  "../Lycoris-Core/Source"
    }
 
+   libdirs {"../Lycoris-Core/ThirdParty/GLFW/lib-vc2022"}
+
    links
    {
-      "Lycoris-Core"
+      "Lycoris-Core",
+      "glfw3"
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
