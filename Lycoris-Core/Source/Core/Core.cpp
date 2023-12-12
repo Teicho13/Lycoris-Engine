@@ -1,8 +1,7 @@
 #include "Core.h"
 #include "Graphics/Renderer.h"
+#include "Graphics/DebugUI.h"
 
-#include "imgui/imgui_impl_glfw.h"
-#include "imgui/imgui_impl_opengl3.h"
 
 #include <iostream>
 
@@ -15,11 +14,7 @@ namespace Core {
 		Lycoris::Renderer::Initialize();
 
 		std::cout << "Initializing ImGui!\n";
-		IMGUI_CHECKVERSION();
-		ImGui::CreateContext();
-		
-		ImGui_ImplGlfw_InitForOpenGL(Lycoris::Window::GetWindow(), true);
-		ImGui_ImplOpenGL3_Init("#version 450");
+		Lycoris::DebugUI::Initialize();
 
 
 
