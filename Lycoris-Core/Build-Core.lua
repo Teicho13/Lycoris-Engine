@@ -5,13 +5,19 @@ project "Lycoris-Core"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp" }
+   files 
+   { 
+    "Source/**.h", 
+    "Source/**.cpp",
+    "ThirdParty/glad/src/**.c"
+    }
 
    includedirs
    {
       "Source",
       "ThirdParty/GLFW/include",
-      "ThirdParty/glad/include"
+      "ThirdParty/glad/include",
+      "ThirdParty/imgui/"
    }
 
 

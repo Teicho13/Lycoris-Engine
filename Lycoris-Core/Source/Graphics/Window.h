@@ -8,6 +8,10 @@ namespace Lycoris
 		static int Create();
 		static void Destroy();
 
+		static void Clear();
+
+		static void Update();
+
 		static void Display();
 
 		static bool IsOpen();

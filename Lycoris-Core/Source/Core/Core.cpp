@@ -18,8 +18,7 @@ namespace Core {
 			
 		while(Lycoris::Window::IsOpen())
 		{
-			Lycoris::Window::PollEvents();
-			Lycoris::Window::Display();
+			Lycoris::Window::Update();
 		}
 	}
 

@@ -10,6 +10,11 @@ namespace Lycoris
 	static void glfw_error_callback(int i, const char* c)
 	{
 	}
+
+	static void framebuffer_size_callback(GLFWwindow* window, int width, int height) 
+	{
+		glViewport(0, 0, width, height);
+	}
 	
 	int Window::Create()
 	{
@@ -51,12 +56,32 @@ namespace Lycoris
 			return -1;
 		}
 
+		glViewport(0, 0, width, height);
+
+		glfwSetFramebufferSizeCallback(g_Window, framebuffer_size_callback);
+
 		return 0;
 	}
 	void Window::Destroy()
 	{
 		glfwDestroyWindow(g_Window);
 		glfwTerminate();
+	}
+	void Window::Clear()
+	{
+		glClearColor(0.20f, 0.52f, 0.92f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+	void Window::Update()
+	{
+		//Clear screen
+		Clear();
+
+		//Process Input
+		PollEvents();
+
+		//Display the screen
+		Display();
 	}
 	void Window::Display()
 	{
