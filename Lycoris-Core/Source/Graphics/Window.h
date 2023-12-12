@@ -1,4 +1,6 @@
 #pragma once
+#include "glad/glad.h"
+#include <GLFW/glfw3.h>
 
 namespace Lycoris
 {
@@ -19,6 +21,8 @@ namespace Lycoris
 		static void Close();
 
 		static void PollEvents();
+
+		static GLFWwindow* GetWindow();
 	};
 }
 

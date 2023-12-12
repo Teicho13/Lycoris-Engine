@@ -1,6 +1,5 @@
 #include "Window.h"
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
+
 
 
 namespace Lycoris
@@ -101,5 +100,9 @@ namespace Lycoris
 
 		if (glfwGetKey(g_Window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS && glfwGetKey(g_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			Close();
+	}
+	GLFWwindow* Window::GetWindow()
+	{
+		return g_Window;
 	}
 }

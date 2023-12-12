@@ -9,7 +9,9 @@ project "Lycoris-Core"
    { 
     "Source/**.h", 
     "Source/**.cpp",
-    "ThirdParty/glad/src/**.c"
+    "ThirdParty/glad/src/**.c",
+    "ThirdParty/imgui/include/imgui/*.h",
+    "ThirdParty/imgui/include/imgui/*.cpp"
     }
 
    includedirs
@@ -17,7 +19,7 @@ project "Lycoris-Core"
       "Source",
       "ThirdParty/GLFW/include",
       "ThirdParty/glad/include",
-      "ThirdParty/imgui/"
+      "ThirdParty/imgui/include"
    }
 
 
