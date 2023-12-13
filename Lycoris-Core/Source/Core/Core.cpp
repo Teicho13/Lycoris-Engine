@@ -15,9 +15,7 @@ namespace Core {
 
 		std::cout << "Initializing ImGui!\n";
 		Lycoris::DebugUI::Initialize();
-
-
-
+	
 		Update();
 	}
 
@@ -26,8 +24,24 @@ namespace Core {
 			
 		while(Lycoris::Window::IsOpen())
 		{
+			Lycoris::Window::PollEvents();
+
+			Lycoris::DebugUI::NewFrame();
+
+			Lycoris::DebugUI::Render();
+
 			Lycoris::Window::Update();
+
+			Lycoris::DebugUI::PostUpdate();
+
+			Lycoris::Window::Display();
 		}
+
+		Shutdown();
+	}
+
+	void Shutdown() {
+		Lycoris::DebugUI::Shutdown();
 	}
 
 }

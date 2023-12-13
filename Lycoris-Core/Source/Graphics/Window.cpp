@@ -31,8 +31,8 @@ namespace Lycoris
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-		int width = 1920;
-		int height = 1080;
+		int width = 1080;
+		int height = 720;
 
 		GLFWmonitor* pMonitor = NULL;
 
@@ -68,19 +68,16 @@ namespace Lycoris
 	}
 	void Window::Clear()
 	{
+		int display_w, display_h;
+		glfwGetFramebufferSize(g_Window, &display_w, &display_h);
+		glViewport(0, 0, display_w, display_h);
 		glClearColor(0.20f, 0.52f, 0.92f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 	void Window::Update()
 	{
-		//Clear screen
+		////Clear screen
 		Clear();
-
-		//Process Input
-		PollEvents();
-
-		//Display the screen
-		Display();
 	}
 	void Window::Display()
 	{
