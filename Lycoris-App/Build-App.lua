@@ -12,7 +12,8 @@ project "Lycoris-App"
       "Source",
 
 	  -- Include Core
-	  "../Lycoris-Core/Source"
+	  "../Lycoris-Core/Source",
+      "../Lycoris-Core/ThirdParty/entt/include"
    }
 
    libdirs {"../Lycoris-Core/ThirdParty/GLFW/lib-vc2022"}

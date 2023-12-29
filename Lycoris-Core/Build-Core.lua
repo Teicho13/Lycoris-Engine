@@ -11,7 +11,8 @@ project "Lycoris-Core"
     "Source/**.cpp",
     "ThirdParty/glad/src/**.c",
     "ThirdParty/imgui/include/imgui/*.h",
-    "ThirdParty/imgui/include/imgui/*.cpp"
+    "ThirdParty/imgui/include/imgui/*.cpp",
+    "ThirdParty/entt/include/*.hpp"
     }
 
    includedirs
@@ -19,7 +20,8 @@ project "Lycoris-Core"
       "Source",
       "ThirdParty/GLFW/include",
       "ThirdParty/glad/include",
-      "ThirdParty/imgui/include"
+      "ThirdParty/imgui/include",
+      "ThirdParty/entt/include"
    }
 
 
