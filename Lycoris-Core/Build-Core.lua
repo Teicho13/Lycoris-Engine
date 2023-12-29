@@ -10,6 +10,8 @@ project "Lycoris-Core"
     "Source/**.h", 
     "Source/**.cpp",
     "ThirdParty/glad/src/**.c",
+    "ThirdParty/GLM/include/GLM/**.hpp",
+    "ThirdParty/GLM/include/GLM/**.inl",
     "ThirdParty/imgui/include/imgui/*.h",
     "ThirdParty/imgui/include/imgui/*.cpp",
     "ThirdParty/entt/include/*.hpp"
@@ -20,6 +22,7 @@ project "Lycoris-Core"
       "Source",
       "ThirdParty/GLFW/include",
       "ThirdParty/glad/include",
+      "ThirdParty/GLM/include/",
       "ThirdParty/imgui/include",
       "ThirdParty/entt/include"
    }

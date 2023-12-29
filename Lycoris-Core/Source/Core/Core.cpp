@@ -1,11 +1,13 @@
 #include "Core.h"
 #include "Graphics/Renderer.h"
 #include "Graphics/DebugUI.h"
-
+#include "Scene.h"
 
 #include <iostream>
 
 namespace Core {
+
+	Lycoris::Scene* scene;
 
 	void Initialize()
 	{
@@ -15,7 +17,10 @@ namespace Core {
 
 		std::cout << "Initializing ImGui!\n";
 		Lycoris::DebugUI::Initialize();
-	
+		
+		std::cout << "Creating new Scene!\n";
+		scene = new Lycoris::Scene();
+
 		Update();
 	}
 
