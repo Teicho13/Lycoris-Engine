@@ -95,7 +95,7 @@ namespace Lycoris
 	{
 		glfwPollEvents();
 
-		if (glfwGetKey(g_Window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS && glfwGetKey(g_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		if (glfwGetKey(g_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			Close();
 	}
 	GLFWwindow* Window::GetWindow()

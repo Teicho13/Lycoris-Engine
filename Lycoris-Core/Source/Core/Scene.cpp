@@ -18,6 +18,10 @@ namespace Lycoris
 		entt::entity entity2 = m_Registry.create();
 		m_Registry.emplace<TransformComponent>(entity2, glm::mat4(1.0f));
 
+		//Create Entity 3
+		entt::entity entity3 = m_Registry.create();
+		m_Registry.emplace<TransformComponent>(entity3, glm::mat4(1.0f));
+
 		//Get all components with transform component
 		auto view = m_Registry.view<TransformComponent>();
 		for (auto entity : view)
@@ -26,8 +30,15 @@ namespace Lycoris
 		}
 	}
 
+	entt::registry& Scene::GetRegistry()
+	{
+		return m_Registry;
+	}
+
 	Scene::~Scene()
 	{
 	}
+
+
 
 }

@@ -8,6 +8,9 @@ namespace Lycoris
 	public:
 		Scene();
 		~Scene();
+
+		entt::registry& GetRegistry();
+
 	private:
 		entt::registry m_Registry;
 	};

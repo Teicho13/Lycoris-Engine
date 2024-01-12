@@ -33,7 +33,7 @@ namespace Core {
 
 			Lycoris::DebugUI::NewFrame();
 
-			Lycoris::DebugUI::Render();
+			Lycoris::DebugUI::Render(scene);
 
 			Lycoris::Window::Update();
 
