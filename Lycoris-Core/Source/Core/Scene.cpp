@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "entt.hpp"
 #include "Components/Transform.h"
+#include "Components/Name.h"
 
 #include <iostream>
 
@@ -17,6 +18,7 @@ namespace Lycoris
 		//Create Entity 2
 		entt::entity entity2 = m_Registry.create();
 		m_Registry.emplace<TransformComponent>(entity2, glm::mat4(1.0f));
+		m_Registry.emplace<NameComponent>(entity2, std::string("TestName"));
 
 		//Create Entity 3
 		entt::entity entity3 = m_Registry.create();
