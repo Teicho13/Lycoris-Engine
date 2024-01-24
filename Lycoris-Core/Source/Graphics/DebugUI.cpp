@@ -44,11 +44,14 @@ namespace Lycoris
 
 	void DebugUI::RenderEntities(Scene* currentScene)
 	{
+		int id = 0;
+		
 		//https://github.com/skypjack/entt/issues/88#issuecomment-1585923584
 
 		auto view = currentScene->GetRegistry().view<entt::entity>();
 		for (auto entity : view)
 		{
+			ImGui::PushID(id);
 			if (ImGui::CollapsingHeader("Entity"))
 			{
 				for (auto&& curr : currentScene->GetRegistry().storage())
@@ -62,6 +65,8 @@ namespace Lycoris
 					}
 				}
 			}
+			ImGui::PopID();
+			id++;
 		}
 	}
 
