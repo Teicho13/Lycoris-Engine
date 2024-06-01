@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +97,11 @@
     <CopyFileToFolders Include="ThirdParty\SDL2-image\lib\x64\SDL2_image.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\Core\DeltaTime.h" />
+    <ClInclude Include="Headers\Core\Engine.h" />
+    <ClInclude Include="Headers\Core\KeyStates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
