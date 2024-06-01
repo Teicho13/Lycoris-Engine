@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Main.cpp" />
+    <ClCompile Include="Source\Managers\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="ThirdParty\SDL2\lib\x64\SDL2.dll">
@@ -102,6 +103,7 @@
     <ClInclude Include="Headers\Core\DeltaTime.h" />
     <ClInclude Include="Headers\Core\Engine.h" />
     <ClInclude Include="Headers\Core\KeyStates.h" />
+    <ClInclude Include="Headers\Managers\TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

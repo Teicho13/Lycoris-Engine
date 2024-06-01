@@ -5,6 +5,7 @@
 #include "./Core/KeyStates.h"
 
 #include "./Core/Engine.h"
+#include "./Managers/TextureManager.h"
 
 DeltaTime dt;
 
@@ -53,6 +54,9 @@ void Engine::Init()
 {
 	//Set current time
 	dt.GetTime();
+
+	//Set Renderer for manager
+	TextureManager::SetRenderer(m_Renderer);
 
 	//Initialize is done and set game to run
 	m_IsRunning = true;
