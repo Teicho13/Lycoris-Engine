@@ -82,6 +82,8 @@
   <ItemGroup>
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Main.cpp" />
+    <ClCompile Include="Source\Core\Sprite.cpp" />
+    <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Managers\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +105,8 @@
     <ClInclude Include="Headers\Core\DeltaTime.h" />
     <ClInclude Include="Headers\Core\Engine.h" />
     <ClInclude Include="Headers\Core\KeyStates.h" />
+    <ClInclude Include="Headers\Core\Sprite.h" />
+    <ClInclude Include="Headers\Entities\Entity.h" />
     <ClInclude Include="Headers\Managers\TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

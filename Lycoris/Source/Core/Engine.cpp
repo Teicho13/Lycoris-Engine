@@ -6,8 +6,10 @@
 
 #include "./Core/Engine.h"
 #include "./Managers/TextureManager.h"
+#include "Entities/Entity.h"
 
 DeltaTime dt;
+Entity* test;
 
 Engine::Engine(bool isFullscreen)
 {
@@ -58,6 +60,8 @@ void Engine::Init()
 	//Set Renderer for manager
 	TextureManager::SetRenderer(m_Renderer);
 
+	test = new Entity("Assets/R-Type/Textures/Player/Player.png");
+
 	//Initialize is done and set game to run
 	m_IsRunning = true;
 }
@@ -72,6 +76,8 @@ void Engine::Shutdown()
 	m_IsRunning = false;
 
 	//<-- Shutdown game elements here -->
+	delete test;
+
 }
 
 void Engine::Render()
@@ -83,7 +89,7 @@ void Engine::Render()
 	SDL_RenderClear(m_Renderer);
 
 	//<-- Render Game Objects here -->
-
+	test->Draw();
 
 	//Render everything to the screen
 	SDL_RenderPresent(m_Renderer);
