@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 class Sprite;
 class Entity
@@ -12,5 +13,5 @@ public:
 
 	Sprite* GetSprite();
 private:
-	Sprite* m_Sprite;
+	std::unique_ptr<Sprite> m_Sprite;
 };

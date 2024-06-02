@@ -7,12 +7,11 @@
 
 Entity::Entity(const char* texturePath)
 {
-	m_Sprite = new Sprite(texturePath);
+	m_Sprite.reset(new Sprite(texturePath));
 }
 
 Entity::~Entity()
 {
-	delete m_Sprite;
 }
 
 void Entity::Draw() const
@@ -28,5 +27,5 @@ void Entity::Draw() const
 
 Sprite* Entity::GetSprite()
 {
-	return m_Sprite;
+	return m_Sprite.get();
 }
