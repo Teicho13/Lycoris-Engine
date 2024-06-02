@@ -6,10 +6,10 @@
 
 #include "./Core/Engine.h"
 #include "./Managers/TextureManager.h"
-#include "Entities/Entity.h"
+#include "./Managers/GameStateManager.h"
 
 DeltaTime dt;
-Entity* test;
+GameStateManager stateManager;
 
 Engine::Engine(bool isFullscreen)
 {
@@ -47,6 +47,7 @@ void Engine::Run()
 	{
 		dt.Update();
 		HandleEvents();
+		stateManager.HandleEvents();
 		Update(dt.GetSeconds());
 		Render();
 	}
@@ -60,7 +61,7 @@ void Engine::Init()
 	//Set Renderer for manager
 	TextureManager::SetRenderer(m_Renderer);
 
-	test = new Entity("Assets/R-Type/Textures/Player/Player.png");
+	stateManager.Init();
 
 	//Initialize is done and set game to run
 	m_IsRunning = true;
@@ -68,7 +69,7 @@ void Engine::Init()
 
 void Engine::Update(float deltaTime)
 {
-
+	stateManager.Update(deltaTime);
 }
 
 void Engine::Shutdown()
@@ -76,7 +77,7 @@ void Engine::Shutdown()
 	m_IsRunning = false;
 
 	//<-- Shutdown game elements here -->
-	delete test;
+	stateManager.Shutdown();
 
 }
 
@@ -89,7 +90,7 @@ void Engine::Render()
 	SDL_RenderClear(m_Renderer);
 
 	//<-- Render Game Objects here -->
-	test->Draw();
+	stateManager.Render();
 
 	//Render everything to the screen
 	SDL_RenderPresent(m_Renderer);
