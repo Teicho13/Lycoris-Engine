@@ -1,32 +1,33 @@
 #include "./R-Type/GameStates/PlayState.h"
 
 #include "Core/Sprite.h"
-#include "Entities/Entity.h"
+#include "./R-Type/Entities/Player.h"
 
 
 PlayState PlayState::m_PlayState;
 
-Entity* test;
+Player* player;
 
 
 void PlayState::Init(GameStateManager* manager)
 {
-	test = new Entity("Assets/Games/R-Type/Textures/Player/Player.png",5,1);
-	test->GetSprite()->SetFrame(2);
+	player = new Player("Assets/Games/R-Type/Textures/Player/Player.png",5,1);
+	player->GetSprite()->SetFrame(2);
 }
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
 {
+	player->Update(deltaTime);
 }
 
 void PlayState::Shutdown()
 {
-	delete test;
+	delete player;
 }
 
 void PlayState::Render(GameStateManager* manager)
 {
-	test->Draw();
+	player->Draw();
 }
 
 void PlayState::HandleEvents(GameStateManager* manager)

@@ -86,6 +86,7 @@
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Managers\GameStateManager.cpp" />
     <ClCompile Include="Source\Managers\TextureManager.cpp" />
+    <ClCompile Include="Source\R-Type\Entities\Player.cpp" />
     <ClCompile Include="Source\R-Type\GameStates\PlayState.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,7 @@
     <ClInclude Include="Headers\Entities\Entity.h" />
     <ClInclude Include="Headers\Managers\GameStateManager.h" />
     <ClInclude Include="Headers\Managers\TextureManager.h" />
+    <ClInclude Include="Headers\R-Type\Entities\Player.h" />
     <ClInclude Include="Headers\R-Type\GameStates\PlayState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
