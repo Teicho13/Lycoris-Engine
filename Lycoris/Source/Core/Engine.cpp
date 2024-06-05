@@ -3,6 +3,7 @@
 //Util
 #include "./Core/DeltaTime.h"
 #include "./Core/KeyStates.h"
+#include "Core/Utility/AppGlobals.h"
 
 #include "./Core/Engine.h"
 #include "./Managers/TextureManager.h"

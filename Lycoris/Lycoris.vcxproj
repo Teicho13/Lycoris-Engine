@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Core\DeltaTime.h" />
+    <ClInclude Include="Headers\Core\Utility\AppGlobals.h" />
     <ClInclude Include="Headers\Core\Engine.h" />
     <ClInclude Include="Headers\Core\GameState.h" />
     <ClInclude Include="Headers\Core\KeyStates.h" />
