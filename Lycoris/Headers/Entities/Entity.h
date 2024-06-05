@@ -7,7 +7,8 @@ class Entity
 public:
 
 	Entity(const char* texturePath);
-	~Entity();
+	Entity(const char* texturePath, const int columns, const int rows);
+	~Entity() = default;
 
 	void Draw() const;
 

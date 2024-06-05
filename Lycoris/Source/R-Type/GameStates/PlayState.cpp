@@ -1,4 +1,6 @@
 #include "./R-Type/GameStates/PlayState.h"
+
+#include "Core/Sprite.h"
 #include "Entities/Entity.h"
 
 
@@ -9,7 +11,8 @@ Entity* test;
 
 void PlayState::Init(GameStateManager* manager)
 {
-	test = new Entity("Assets/R-Type/Textures/Player/Player.png");
+	test = new Entity("Assets/Games/R-Type/Textures/Player/Player.png",5,1);
+	test->GetSprite()->SetFrame(2);
 }
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)

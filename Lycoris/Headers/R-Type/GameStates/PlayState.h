@@ -13,7 +13,7 @@ public:
 	static PlayState* Instance() { return &m_PlayState; }
 
 protected:
-	PlayState() {}
+	PlayState() = default;
 
 private:
 	static PlayState m_PlayState;
