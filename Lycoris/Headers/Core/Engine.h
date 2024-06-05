@@ -17,10 +17,6 @@ public:
 	void Render();
 	void HandleEvents();
 
-
-	static constexpr int m_WindowWidth = 1280;
-	static constexpr int m_WindowHeight = 720;
-
 private:
 	bool m_IsRunning = false;
 
