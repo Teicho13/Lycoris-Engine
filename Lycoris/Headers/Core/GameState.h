@@ -10,5 +10,5 @@ public:
 	virtual void Render(GameStateManager* manager) = 0;
 	virtual void HandleEvents(GameStateManager* manager) = 0;
 
-	void ChangeState(GameStateManager* manager, GameState* state) { manager->ChangeState(state); }
+	void ChangeState(GameStateManager* manager, const m_GameStates state) { manager->ChangeState(state); }
 };

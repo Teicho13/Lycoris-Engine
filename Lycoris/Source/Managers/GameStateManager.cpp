@@ -3,10 +3,12 @@
 #include "./Core/GameState.h"
 #include "./R-Type/GameStates/PlayState.h"
 
+enum class m_GameStates { MENU, PLAY, END };
+
 void GameStateManager::Init()
 {
 	//Load Play State singelton
-	ChangeState(PlayState::Instance());
+	ChangeState(m_GameStates::PLAY);
 
 	m_States.back()->Init(this);
 }
@@ -31,8 +33,25 @@ void GameStateManager::HandleEvents()
 	m_States.back()->HandleEvents(this);
 }
 
-void GameStateManager::ChangeState(GameState* state)
+void GameStateManager::ChangeState(m_GameStates state)
 {
+	GameState* newState;
+
+	switch (state)
+	{
+	case m_GameStates::MENU :
+		newState = PlayState::Instance();
+		break;
+
+	case m_GameStates::PLAY :
+		newState = PlayState::Instance();
+		break;
+
+	case m_GameStates::END :
+		newState = PlayState::Instance();
+		break;
+	}
+
 	//Remove current state
 	if (!m_States.empty())
 	{
@@ -41,8 +60,9 @@ void GameStateManager::ChangeState(GameState* state)
 		m_States.pop_back();
 	}
 
-	m_States.push_back(state);
+	m_States.push_back(newState);
 	m_States.back()->Init(this);
+
 }
 
 void GameStateManager::RemoveState()

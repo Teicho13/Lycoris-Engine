@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+
+enum class m_GameStates;
 class GameState;
 class GameStateManager
 {
@@ -12,7 +14,7 @@ public:
 	void Render();
 	void HandleEvents();
 
-	void ChangeState(GameState* state);
+	void ChangeState(m_GameStates state);
 	void RemoveState();
 
 	std::vector<GameState*> m_States;
