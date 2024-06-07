@@ -1,6 +1,7 @@
 #pragma once
 #include "./Core/GameState.h"
 
+class Map;
 class PlayState : public GameState
 {
 public:
@@ -17,4 +18,6 @@ protected:
 
 private:
 	static PlayState m_PlayState;
+
+	Map* m_Level01 = nullptr;
 };

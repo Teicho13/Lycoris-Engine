@@ -49,6 +49,9 @@ void Engine::Run()
 	{
 		dt.Update();
 		HandleEvents();
+		if(!m_IsRunning)
+			return;
+
 		stateManager.HandleEvents();
 		Update(dt.GetSeconds());
 		Render();
@@ -107,7 +110,7 @@ void Engine::HandleEvents()
 		{
 			//Window "X" is clicked
 		case SDL_QUIT:
-			m_IsRunning = false;
+			Shutdown();
 			break;
 
 			//key is pressed
@@ -115,7 +118,7 @@ void Engine::HandleEvents()
 			//If Escape is clicked exit out
 			if (event.key.keysym.sym == SDLK_ESCAPE)
 			{
-				m_IsRunning = false;
+				Shutdown();
 				return;
 			}
 		}
