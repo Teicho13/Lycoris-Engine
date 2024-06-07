@@ -8,8 +8,7 @@ enum class m_GameStates { MENU, PLAY, END };
 void GameStateManager::Init()
 {
 	//Load Play State singelton
-	ChangeState(m_GameStates::PLAY);
-
+	m_States.push_back(PlayState::Instance());
 	m_States.back()->Init(this);
 }
 
