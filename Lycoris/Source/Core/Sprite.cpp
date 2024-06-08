@@ -70,7 +70,7 @@ void Sprite::GetSourceRec(SDL_Rect& rec) const
 	int frameH = 0;
 
 	//Check if current frame is bigger than max frames per column
-	if(m_CurrentFrame > m_FrameColumns)
+	if(m_CurrentFrame >= m_FrameColumns)
 	{
 		//Check how many times the frame count goes past the max (giving us the rows)
 		frameH = m_CurrentFrame / m_FrameColumns;
