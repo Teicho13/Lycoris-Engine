@@ -7,6 +7,7 @@
 
 #include "./R-Type/Map/Map.h"
 #include "./R-Type/Map/Tile.h"
+#include "./R-Type/Map/Camera.h"
 
 Map::Map(const char* textureMapPath, const char* tileSheetPath, const int columns, const int rows)
 {
@@ -82,7 +83,7 @@ void Map::CreateTiles(const char* textureMapPath)
 	}
 }
 
-void Map::DrawMap() const
+void Map::DrawMap(Camera& cam) const
 {
 	if (!m_CanRender)
 		return;
@@ -92,8 +93,8 @@ void Map::DrawMap() const
 		for (int j = 0; j < m_MapColumns; ++j)
 		{
 			int id = m_MapTiles[i][j]->GetID();
-			float posX = static_cast<float>(m_MapSheet->GetWidth() * j);
-			float PosY = static_cast<float>(m_MapSheet->GetHeight() * i);
+			float posX = (static_cast<float>(m_MapSheet->GetWidth() * j)) - cam.GetPosX();
+			float PosY = static_cast<float>(m_MapSheet->GetHeight() * i) - cam.GetPosY();
 			RenderSprite(id,posX,PosY);
 		}
 	}
@@ -120,7 +121,7 @@ void Map::RenderSprite(int frameID, float posX, float posY) const
 		m_MapSheet->SetFrame(frameID);
 
 		//Create Variable for the position of the sprite
-		const SDL_FRect tempRec(posX, posY, static_cast<float>(m_MapSheet->GetWidth()), static_cast<float>(m_MapSheet->GetHeight()));
+		const SDL_Rect tempRec(static_cast<int>(posX), static_cast<int>(posY), m_MapSheet->GetWidth(), m_MapSheet->GetHeight());
 
 		//Create temp variable to get the position / size that needs to be rendered
 		SDL_Rect tempSource;

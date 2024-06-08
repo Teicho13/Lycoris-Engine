@@ -3,6 +3,7 @@
 
 class Tile;
 class Sprite;
+class Camera;
 
 class Map
 {
@@ -12,7 +13,7 @@ public:
 	~Map();
 
 	void CreateTiles(const char* textureMapPath);
-	void DrawMap() const;
+	void DrawMap(Camera& cam) const;
 	void RemoveTiles() const;
 
 
