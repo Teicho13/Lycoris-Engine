@@ -88,6 +88,7 @@
     <ClCompile Include="Source\Managers\GameStateManager.cpp" />
     <ClCompile Include="Source\Managers\TextureManager.cpp" />
     <ClCompile Include="Source\R-Type\Entities\Player.cpp" />
+    <ClCompile Include="Source\R-Type\Entities\Projectile.cpp" />
     <ClCompile Include="Source\R-Type\GameStates\PlayState.cpp" />
     <ClCompile Include="Source\R-Type\Map\Camera.cpp" />
     <ClCompile Include="Source\R-Type\Map\Map.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="Headers\Managers\TextureManager.h" />
     <ClInclude Include="Headers\R-Type\Entities\Bullet.h" />
     <ClInclude Include="Headers\R-Type\Entities\Player.h" />
+    <ClInclude Include="Headers\R-Type\Entities\Projectile.h" />
     <ClInclude Include="Headers\R-Type\GameStates\PlayState.h" />
     <ClInclude Include="Headers\R-Type\Map\Camera.h" />
     <ClInclude Include="Headers\R-Type\Map\Map.h" />

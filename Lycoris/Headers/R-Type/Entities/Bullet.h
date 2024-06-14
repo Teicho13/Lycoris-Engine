@@ -1,14 +1,11 @@
 #pragma once
-#include "./Entities/Entity.h"
+#include "./Projectile.h"
 
-class Bullet : public Entity
+class Bullet : public Projectile
 {
 public:
 	Bullet(const char* texturePath);
 	Bullet(const char* texturePath, const int columns, const int rows);
 
 	void Update(float deltaTime) override;
-
-private:
-	float m_MoveSpeed = 1000.f;
 };

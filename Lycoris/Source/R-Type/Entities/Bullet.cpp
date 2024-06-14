@@ -3,16 +3,16 @@
 
 
 Bullet::Bullet(const char* texturePath)
-	: Entity(texturePath)
+	: Projectile(texturePath)
 {
 }
 
 Bullet::Bullet(const char* texturePath, const int columns, const int rows)
-	: Entity(texturePath, columns, rows)
+	: Projectile(texturePath, columns, rows)
 {
 }
 
 void Bullet::Update(float deltaTime)
 {
-	SetPosX(GetPosX() + m_MoveSpeed * deltaTime);
+	SetPosX(GetPosX() + GetMoveSpeed() * deltaTime);
 }
