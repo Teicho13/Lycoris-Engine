@@ -1,6 +1,7 @@
 #include "./R-Type/GameStates/PlayState.h"
 
 #include "Core/Sprite.h"
+#include "Managers/TextureManager.h"
 #include "./R-Type/Entities/Player.h"
 #include "./R-Type/Entities/Bullet.h"
 #include "R-Type/Map/Camera.h"
@@ -21,11 +22,14 @@ void PlayState::Init(GameStateManager* manager)
 	m_Level01 = new Map("./Assets/Games/R-Type/MapData/Level01.csv", "Assets/Games/R-Type/Textures/Maps/Level01Tiles64.png", 22, 20);
 
 	bullet = new Bullet("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1);
+
+	player->SetCamera(&camera);
 }
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
 {
 	player->Update(deltaTime);
+	player->CheckCurrentTile(m_Level01);
 	camera.MoveCamera(deltaTime);
 	bullet->Update(deltaTime);
 }
@@ -42,6 +46,8 @@ void PlayState::Render(GameStateManager* manager)
 	m_Level01->DrawMap(camera);
 	player->Draw();
 	bullet->Draw();
+
+	TextureManager::RenderBox(player->GetPosX(), player->GetPosY(), player->GetWidth(), player->GetHeight());
 }
 
 void PlayState::HandleEvents(GameStateManager* manager)

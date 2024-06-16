@@ -16,13 +16,13 @@ public:
 	void DrawMap(Camera& cam) const;
 	void RemoveTiles() const;
 
-
-private:
-
-	void RenderSprite(int frameID, float posX, float posY) const;
+	Tile* GetTile(int row, int column) const;
 
 	static constexpr int m_MapRows = 12;
 	static constexpr int m_MapColumns = 268;
+private:
+
+	void RenderSprite(int frameID, float posX, float posY) const;
 
 	std::unique_ptr<Sprite> m_MapSheet = nullptr;
 	Tile* m_MapTiles[m_MapRows][m_MapColumns];

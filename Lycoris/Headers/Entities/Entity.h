@@ -9,6 +9,8 @@ public:
 	Entity(const char* texturePath);
 	Entity(const char* texturePath, const int columns, const int rows);
 
+	virtual ~Entity() = default;
+
 	void Draw() const;
 	virtual void Update(float deltaTime) = 0;
 

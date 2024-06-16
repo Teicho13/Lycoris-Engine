@@ -20,6 +20,8 @@ public:
 	static void RenderTexture(SDL_Texture* texture, const SDL_Rect* position);
 	static void RenderTexture(SDL_Texture* texture, const SDL_Rect* sourcePos, const SDL_Rect* position);
 
+	static void RenderBox(const float posX, const float posY, const float width, const float height);
+
 private:
 	static inline SDL_Renderer* m_Renderer = nullptr;
 };

@@ -54,3 +54,12 @@ void TextureManager::RenderTexture(SDL_Texture* texture, const SDL_Rect* sourceP
 {
 	SDL_RenderCopy(m_Renderer, texture, sourcePos, position);
 }
+
+void TextureManager::RenderBox(const float posX, const float posY, const float width, const float height)
+{
+	SDL_SetRenderDrawColor(m_Renderer, 255, 0, 0, 255);
+	SDL_FRect tempRect = SDL_FRect(posX, posY, width, height);
+	SDL_RenderDrawRectF(m_Renderer, &tempRect);
+}
+
+

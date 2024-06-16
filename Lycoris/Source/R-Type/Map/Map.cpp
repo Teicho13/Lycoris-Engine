@@ -114,6 +114,11 @@ void Map::RemoveTiles() const
 	}
 }
 
+Tile* Map::GetTile(int row, int column) const
+{
+	return m_MapTiles[row][column];
+}
+
 void Map::RenderSprite(int frameID, float posX, float posY) const
 {
 	if (m_MapSheet != nullptr)
