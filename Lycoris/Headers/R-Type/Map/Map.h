@@ -16,6 +16,8 @@ public:
 	void DrawMap(Camera& cam) const;
 	void RemoveTiles() const;
 
+	bool CanTileCollide(Tile* tile);
+
 	Tile* GetTile(int row, int column) const;
 
 	static constexpr int m_MapRows = 12;

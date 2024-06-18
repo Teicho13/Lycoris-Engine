@@ -29,7 +29,7 @@ void PlayState::Init(GameStateManager* manager)
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
 {
 	player->Update(deltaTime);
-	player->CheckCurrentTile(m_Level01);
+	player->HandleTileCollision(m_Level01);
 	camera.MoveCamera(deltaTime);
 	bullet->Update(deltaTime);
 }
