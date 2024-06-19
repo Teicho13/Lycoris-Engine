@@ -1,4 +1,7 @@
 #include "./R-Type/Entities/Projectile.h"
+
+#include <iostream>
+
 #include "./Core/Sprite.h"
 
 Projectile::Projectile(const char* texturePath)
@@ -11,6 +14,11 @@ Projectile::Projectile(const char* texturePath, const int columns, const int row
 {
 }
 
+Projectile::~Projectile()
+{
+	std::cout << "Deleted Projectile!\n";
+}
+
 float Projectile::GetMoveSpeed() const
 {
 	return m_MoveSpeed;
@@ -19,4 +27,9 @@ float Projectile::GetMoveSpeed() const
 void Projectile::SetMoveSpeed(float newSpeed)
 {
 	m_MoveSpeed = newSpeed;
+}
+
+bool Projectile::ShouldRemove() const
+{
+	return m_CanRemove;
 }

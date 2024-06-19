@@ -5,6 +5,7 @@
 
 #include "./Core/Sprite.h"
 #include "./Managers/TextureManager.h"
+#include "./Managers/ProjectileManager.h"
 #include "./R-Type/Entities/Player.h"
 #include "./R-Type/Entities/Bullet.h"
 #include "./R-Type/Map/Camera.h"
@@ -12,6 +13,8 @@
 
 
 PlayState PlayState::m_PlayState;
+
+ProjectileManager projectileManager;
 
 Player* player;
 Camera camera;
@@ -35,6 +38,7 @@ void PlayState::Tick(GameStateManager* manager, float deltaTime)
 	player->HandleTileCollision(m_Level01);
 	camera.MoveCamera(deltaTime);
 	bullet->Update(deltaTime);
+	projectileManager.Update(deltaTime);
 }
 
 void PlayState::Shutdown()
@@ -49,6 +53,7 @@ void PlayState::Render(GameStateManager* manager)
 	m_Level01->DrawMap(camera);
 	player->Draw();
 	bullet->Draw();
+	projectileManager.Render();
 
 	TextureManager::RenderBox(player->GetPosX(), player->GetPosY(), player->GetWidth(), player->GetHeight());
 }
@@ -77,6 +82,8 @@ void PlayState::HandleEvents(GameStateManager* manager)
 		case SDL_MOUSEBUTTONDOWN:
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
+				projectileManager.AddBullet();
+				std::cout << "Bullet Created \n";
 			}
 			break;
 		}
