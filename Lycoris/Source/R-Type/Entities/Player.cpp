@@ -43,19 +43,19 @@ void Player::HandleTileCollision(Map* map)
 	if (posY2 > (Map::m_MapRows - 1))
 		posY2 = 11;
 
-	if (map->CanTileCollide(map->GetTile(posY, posX)))
+	if (map->GetTile(posY, posX)->CanCollide())
 	{
 		std::cout << "Collide 1 \n";
 	}
-	if (map->CanTileCollide(map->GetTile(posY, posX2)))
+	if (map->GetTile(posY, posX2)->CanCollide())
 	{
 		std::cout << "Collide 2 \n";
 	}
-	if (map->CanTileCollide(map->GetTile(posY2, posX)))
+	if (map->GetTile(posY2, posX)->CanCollide())
 	{
 		std::cout << "Collide 3 \n";
 	}
-	if (map->CanTileCollide(map->GetTile(posY2, posX2)))
+	if (map->GetTile(posY2, posX2)->CanCollide())
 	{
 		std::cout << "Collide 4 \n";
 	}

@@ -114,21 +114,6 @@ void Map::RemoveTiles() const
 	}
 }
 
-bool Map::CanTileCollide(Tile* tile)
-{
-	if(tile != nullptr)
-	{
-		int id = tile->GetID();
-		if(id != 17 && id != 126 && id != 127 && id != 208)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	return false;
-}
-
 Tile* Map::GetTile(int row, int column) const
 {
 	return m_MapTiles[row][column];
