@@ -1,11 +1,14 @@
 #include "./R-Type/GameStates/PlayState.h"
 
-#include "Core/Sprite.h"
-#include "Managers/TextureManager.h"
+#include <iostream>
+#include <SDL_events.h>
+
+#include "./Core/Sprite.h"
+#include "./Managers/TextureManager.h"
 #include "./R-Type/Entities/Player.h"
 #include "./R-Type/Entities/Bullet.h"
-#include "R-Type/Map/Camera.h"
-#include "R-Type/Map/Map.h"
+#include "./R-Type/Map/Camera.h"
+#include "./R-Type/Map/Map.h"
 
 
 PlayState PlayState::m_PlayState;
@@ -52,4 +55,31 @@ void PlayState::Render(GameStateManager* manager)
 
 void PlayState::HandleEvents(GameStateManager* manager)
 {
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+			//Window "X" is clicked
+		case SDL_QUIT:
+			manager->Shutdown();
+			break;
+
+			//key is pressed
+		case SDL_KEYDOWN:
+			//If Escape is clicked exit out
+			if (event.key.keysym.sym == SDLK_ESCAPE)
+			{
+				manager->Shutdown();
+				return;
+			}
+		case SDL_MOUSEBUTTONDOWN:
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+			}
+			break;
+		}
+	}
+
 }

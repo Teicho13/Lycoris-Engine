@@ -45,14 +45,12 @@ void Engine::Run()
 {
 	Init();
 
-	while(m_IsRunning)
+	while(stateManager.GetIsRunning())
 	{
 		dt.Update();
 		HandleEvents();
-		if(!m_IsRunning)
+		if(!stateManager.GetIsRunning())
 			return;
-
-		stateManager.HandleEvents();
 		Update(dt.GetSeconds());
 		Render();
 	}
@@ -67,9 +65,6 @@ void Engine::Init()
 	TextureManager::SetRenderer(m_Renderer);
 
 	stateManager.Init();
-
-	//Initialize is done and set game to run
-	m_IsRunning = true;
 }
 
 void Engine::Update(float deltaTime)
@@ -79,16 +74,13 @@ void Engine::Update(float deltaTime)
 
 void Engine::Shutdown()
 {
-	m_IsRunning = false;
-
 	//<-- Shutdown game elements here -->
 	stateManager.Shutdown();
-
 }
 
 void Engine::Render()
 {
-	if (!m_IsRunning) return;
+	if (!stateManager.GetIsRunning()) return;
 
 	//Clear render screen for new frame
 	SDL_SetRenderDrawColor(m_Renderer, 27, 146, 214, 255);
@@ -103,26 +95,7 @@ void Engine::Render()
 
 void Engine::HandleEvents()
 {
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		switch(event.type)
-		{
-			//Window "X" is clicked
-		case SDL_QUIT:
-			Shutdown();
-			break;
-
-			//key is pressed
-		case SDL_KEYDOWN:
-			//If Escape is clicked exit out
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-			{
-				Shutdown();
-				return;
-			}
-		}
-	}
+	stateManager.HandleEvents();
 }
 
 

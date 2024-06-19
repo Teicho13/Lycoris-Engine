@@ -18,8 +18,6 @@ public:
 	void HandleEvents();
 
 private:
-	bool m_IsRunning = false;
-
 	//SDL related variables
 	SDL_Window* m_Window = nullptr;
 	SDL_Renderer* m_Renderer = nullptr;

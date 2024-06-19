@@ -17,5 +17,10 @@ public:
 	void ChangeState(m_GameStates state);
 	void RemoveState();
 
+	bool GetIsRunning() const;
+
 	std::vector<GameState*> m_States;
+
+private:
+	bool m_IsRunning = false;
 };
