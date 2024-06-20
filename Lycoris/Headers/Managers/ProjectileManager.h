@@ -10,8 +10,8 @@ public:
 	ProjectileManager() = default;
 
 	void Update(float deltaTime);
-	void CheckBounds();
 	void Render();
+	void ClearProjectiles();
 
 
 	void AddBullet();

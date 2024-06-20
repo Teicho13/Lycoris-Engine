@@ -11,7 +11,7 @@ public:
 	Player(const char* texturePath, const int columns, const int rows);
 
 	void Update(float deltaTime) override;
-	void HandleTileCollision(Map* map);
+	bool HandleTileCollision(Map* map) const;
 
 	void SetCamera(Camera* camera);
 	Camera* GetCamera(Camera* camera) const;

@@ -2,7 +2,8 @@
 #include <vector>
 
 
-enum class m_GameStates;
+enum class m_GameStates { MENU, PLAY, END };
+
 class GameState;
 class GameStateManager
 {

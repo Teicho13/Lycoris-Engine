@@ -14,12 +14,15 @@
 Player::Player(const char* texturePath)
 	: Entity(texturePath)
 {
+	SetWidth(GetWidth() - 10);
+	SetHeight(GetHeight() - 10);
 }
 
 Player::Player(const char* texturePath, const int columns, const int rows)
 	: Entity(texturePath,columns,rows)
 {
-
+	SetWidth(GetWidth() - 10);
+	SetHeight(GetHeight() - 10);
 }
 
 void Player::Update(float deltaTime)
@@ -28,10 +31,10 @@ void Player::Update(float deltaTime)
 	HandleBoundChecks();
 }
 
-void Player::HandleTileCollision(Map* map)
+bool Player::HandleTileCollision(Map* map) const
 {
 	if(m_CamerRef == nullptr)
-		return;
+		return false;
 
 
 	int posX = (static_cast<int>(GetPosX() + m_CamerRef->GetPosX())) / 64;
@@ -45,20 +48,22 @@ void Player::HandleTileCollision(Map* map)
 
 	if (map->GetTile(posY, posX)->CanCollide())
 	{
-		std::cout << "Collide 1 \n";
+		return true;
 	}
 	if (map->GetTile(posY, posX2)->CanCollide())
 	{
-		std::cout << "Collide 2 \n";
+		return true;
 	}
 	if (map->GetTile(posY2, posX)->CanCollide())
 	{
-		std::cout << "Collide 3 \n";
+		return true;
 	}
 	if (map->GetTile(posY2, posX2)->CanCollide())
 	{
-		std::cout << "Collide 4 \n";
+		return true;
 	}
+
+	return false;
 }
 
 void Player::SetCamera(Camera* camera)

@@ -26,6 +26,11 @@ void ProjectileManager::Render()
 	}
 }
 
+void ProjectileManager::ClearProjectiles()
+{
+	m_Projectiles.clear();
+}
+
 void ProjectileManager::AddBullet()
 {
 	m_Projectiles.push_back(std::make_unique<Bullet>("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1));

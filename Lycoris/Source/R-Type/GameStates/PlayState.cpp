@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <SDL_events.h>
-
 #include "./Core/Sprite.h"
 #include "./Managers/TextureManager.h"
 #include "./Managers/ProjectileManager.h"
@@ -32,13 +31,18 @@ void PlayState::Init(GameStateManager* manager)
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
 {
 	player->Update(deltaTime);
-	player->HandleTileCollision(m_Level01);
+	if(player->HandleTileCollision(m_Level01))
+	{
+		manager->ChangeState(m_GameStates::PLAY);
+	}
 	camera.MoveCamera(deltaTime);
 	projectileManager.Update(deltaTime);
 }
 
 void PlayState::Shutdown()
 {
+	projectileManager.ClearProjectiles();
+	camera.ResetPosition();
 	delete player;
 	delete m_Level01;
 }

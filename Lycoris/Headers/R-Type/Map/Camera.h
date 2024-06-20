@@ -5,6 +5,7 @@ class Camera
 public:
 
 	void MoveCamera(const float deltaTime);
+	void ResetPosition();
 
 	float GetPosX() const;
 	float GetPosY() const;

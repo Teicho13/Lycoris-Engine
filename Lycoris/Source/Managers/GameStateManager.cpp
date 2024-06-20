@@ -3,7 +3,7 @@
 #include "./Core/GameState.h"
 #include "./R-Type/GameStates/PlayState.h"
 
-enum class m_GameStates { MENU, PLAY, END };
+
 
 void GameStateManager::Init()
 {
