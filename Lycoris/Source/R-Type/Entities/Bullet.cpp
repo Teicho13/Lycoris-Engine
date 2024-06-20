@@ -15,11 +15,6 @@ Bullet::Bullet(const char* texturePath, const int columns, const int rows)
 {
 }
 
-Bullet::~Bullet()
-{
-	std::cout << "Bullet Removed \n";
-}
-
 void Bullet::Update(float deltaTime)
 {
 	SetPosX(GetPosX() + GetMoveSpeed() * deltaTime);
@@ -27,6 +22,5 @@ void Bullet::Update(float deltaTime)
 	if(static_cast<int>(GetPosX()) + GetWidth() > m_WindowWidth)
 	{
 		m_CanRemove = true;
-		//std::cout << "CanRemove \n";
 	}
 }

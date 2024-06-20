@@ -14,11 +14,6 @@ Projectile::Projectile(const char* texturePath, const int columns, const int row
 {
 }
 
-Projectile::~Projectile()
-{
-	std::cout << "Deleted Projectile!\n";
-}
-
 float Projectile::GetMoveSpeed() const
 {
 	return m_MoveSpeed;

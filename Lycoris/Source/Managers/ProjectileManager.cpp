@@ -5,15 +5,22 @@
 
 void ProjectileManager::Update(float deltaTime)
 {
-	for (auto projectile : m_Projectiles)
+	for (int i = 0; i < m_Projectiles.size(); ++i)
 	{
-		projectile->Update(deltaTime);
+		if(m_Projectiles[i]->ShouldRemove())
+		{
+			m_Projectiles.erase(m_Projectiles.begin() + i);
+			i--;
+			continue;
+		}
+
+		m_Projectiles[i]->Update(deltaTime);
 	}
 }
 
 void ProjectileManager::Render()
 {
-	for (auto projectile : m_Projectiles)
+	for (const auto& projectile : m_Projectiles)
 	{
 		projectile->Draw();
 	}
@@ -21,5 +28,5 @@ void ProjectileManager::Render()
 
 void ProjectileManager::AddBullet()
 {
-	m_Projectiles.emplace_back(new Bullet("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1));
+	m_Projectiles.push_back(std::make_unique<Bullet>("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1));
 }

@@ -17,5 +17,5 @@ public:
 	void AddBullet();
 
 private:
-	std::vector<Projectile*> m_Projectiles;
+	std::vector<std::unique_ptr<Projectile>> m_Projectiles;
 };

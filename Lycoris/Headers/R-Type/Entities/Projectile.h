@@ -7,8 +7,6 @@ public:
 	Projectile(const char* texturePath);
 	Projectile(const char* texturePath, const int columns, const int rows);
 
-	~Projectile() override;
-
 	float GetMoveSpeed() const;
 	void SetMoveSpeed(float newSpeed);
 

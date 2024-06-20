@@ -8,7 +8,5 @@ public:
 	Bullet(const char* texturePath);
 	Bullet(const char* texturePath, const int columns, const int rows);
 
-	~Bullet() override;
-
 	void Update(float deltaTime) override;
 };
