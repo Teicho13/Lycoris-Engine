@@ -1,7 +1,8 @@
 #include "./Managers/ProjectileManager.h"
 
-#include "R-Type/Entities/Projectile.h"
+#include "./R-Type/Entities/Projectile.h"
 #include "./R-Type/Entities/Bullet.h"
+#include "./R-Type/Entities/Player.h"
 
 void ProjectileManager::Update(float deltaTime)
 {
@@ -31,7 +32,7 @@ void ProjectileManager::ClearProjectiles()
 	m_Projectiles.clear();
 }
 
-void ProjectileManager::AddBullet()
+void ProjectileManager::AddBullet(Player* player)
 {
-	m_Projectiles.push_back(std::make_unique<Bullet>("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1));
+	m_Projectiles.push_back(std::make_unique<Bullet>("Assets/Games/R-Type/Textures/Player/Bullet.png", 1, 1,player->GetPosX() + static_cast<float>(player->GetWidth()),player->GetPosY() + static_cast<float>(player->GetHeight()) / 2.f));
 }

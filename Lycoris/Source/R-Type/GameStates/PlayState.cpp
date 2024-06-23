@@ -80,7 +80,7 @@ void PlayState::HandleEvents(GameStateManager* manager)
 		case SDL_MOUSEBUTTONDOWN:
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
-				projectileManager.AddBullet();
+				projectileManager.AddBullet(player);
 			}
 			break;
 		}

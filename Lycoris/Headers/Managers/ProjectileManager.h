@@ -3,6 +3,7 @@
 #include <vector>
 
 class Projectile;
+class Player;
 
 class ProjectileManager
 {
@@ -14,7 +15,7 @@ public:
 	void ClearProjectiles();
 
 
-	void AddBullet();
+	void AddBullet(Player* player);
 
 private:
 	std::vector<std::unique_ptr<Projectile>> m_Projectiles;

@@ -15,6 +15,13 @@ Bullet::Bullet(const char* texturePath, const int columns, const int rows)
 {
 }
 
+Bullet::Bullet(const char* texturePath, const int columns, const int rows, float posX, float posY)
+	: Projectile(texturePath, columns, rows)
+{
+	SetPosX(posX);
+	SetPosY(posY);
+}
+
 void Bullet::Update(float deltaTime)
 {
 	SetPosX(GetPosX() + GetMoveSpeed() * deltaTime);
