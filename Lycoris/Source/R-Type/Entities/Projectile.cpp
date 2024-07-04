@@ -24,6 +24,11 @@ void Projectile::SetMoveSpeed(float newSpeed)
 	m_MoveSpeed = newSpeed;
 }
 
+void Projectile::SetCanDestroy()
+{
+	m_CanRemove = true;
+}
+
 bool Projectile::ShouldRemove() const
 {
 	return m_CanRemove;

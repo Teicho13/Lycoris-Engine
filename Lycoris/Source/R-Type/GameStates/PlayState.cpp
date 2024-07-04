@@ -37,6 +37,7 @@ void PlayState::Tick(GameStateManager* manager, float deltaTime)
 	}
 	camera.MoveCamera(deltaTime);
 	projectileManager.Update(deltaTime);
+	projectileManager.BulletCollisionCheck(*m_Level01, camera.GetPosX());
 }
 
 void PlayState::Shutdown()

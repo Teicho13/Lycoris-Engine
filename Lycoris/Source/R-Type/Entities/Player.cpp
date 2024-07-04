@@ -46,19 +46,7 @@ bool Player::HandleTileCollision(Map* map) const
 	if (posY2 > (Map::m_MapRows - 1))
 		posY2 = 11;
 
-	if (map->GetTile(posY, posX)->CanCollide())
-	{
-		return true;
-	}
-	if (map->GetTile(posY, posX2)->CanCollide())
-	{
-		return true;
-	}
-	if (map->GetTile(posY2, posX)->CanCollide())
-	{
-		return true;
-	}
-	if (map->GetTile(posY2, posX2)->CanCollide())
+	if(map->HasTileCollision(posX, posX2, posY, posY2))
 	{
 		return true;
 	}

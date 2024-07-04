@@ -10,6 +10,8 @@ public:
 	float GetMoveSpeed() const;
 	void SetMoveSpeed(float newSpeed);
 
+	void SetCanDestroy();
+
 	bool ShouldRemove() const;
 
 protected:

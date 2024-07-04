@@ -4,6 +4,8 @@
 #include "./R-Type/Entities/Bullet.h"
 #include "./R-Type/Entities/Player.h"
 
+#include "./R-Type/Map/Map.h"
+
 void ProjectileManager::Update(float deltaTime)
 {
 	for (int i = 0; i < m_Projectiles.size(); ++i)
@@ -19,7 +21,27 @@ void ProjectileManager::Update(float deltaTime)
 	}
 }
 
-void ProjectileManager::Render()
+void ProjectileManager::BulletCollisionCheck(const Map& map, const float offsetX) const
+{
+	for (auto& bullet : m_Projectiles)
+	{
+		int posX = (static_cast<int>(bullet->GetPosX() + offsetX)) / 64;
+		int posX2 = (static_cast<int>(bullet->GetPosX() + offsetX) + bullet->GetWidth()) / 64;
+
+		int posY = static_cast<int>(bullet->GetPosY() / 64);
+		int posY2 = (static_cast<int>(bullet->GetPosY()) + bullet->GetHeight()) / 64;
+
+		if (posY2 > (Map::m_MapRows - 1))
+			posY2 = 11;
+
+		if(map.HasTileCollision(posX, posX2, posY, posY2))
+		{
+			bullet->SetCanDestroy();
+		}
+	}
+}
+
+void ProjectileManager::Render() const
 {
 	for (const auto& projectile : m_Projectiles)
 	{

@@ -114,6 +114,28 @@ void Map::RemoveTiles() const
 	}
 }
 
+bool Map::HasTileCollision(int posX, int posX2, int posY, int posY2) const
+{
+	if (GetTile(posY, posX)->CanCollide())
+	{
+		return true;
+	}
+	if (GetTile(posY, posX2)->CanCollide())
+	{
+		return true;
+	}
+	if (GetTile(posY2, posX)->CanCollide())
+	{
+		return true;
+	}
+	if (GetTile(posY2, posX2)->CanCollide())
+	{
+		return true;
+	}
+
+	return false;
+}
+
 Tile* Map::GetTile(int row, int column) const
 {
 	return m_MapTiles[row][column];

@@ -4,6 +4,7 @@
 
 class Projectile;
 class Player;
+class Map;
 
 class ProjectileManager
 {
@@ -11,7 +12,8 @@ public:
 	ProjectileManager() = default;
 
 	void Update(float deltaTime);
-	void Render();
+	void BulletCollisionCheck(const Map& map, const float offsetX) const;
+	void Render() const;
 	void ClearProjectiles();
 
 
