@@ -3,6 +3,8 @@
 #include "managers/TextureManager.h"
 #include <SDL_rect.h>
 
+#include "Managers/ResourceManager.h"
+
 Sprite::Sprite(const char* texturePath)
 {
 	m_Texture = TextureManager::CreateTexture(texturePath, m_SpriteWidth, m_SpriteHeight);
@@ -21,7 +23,7 @@ Sprite::Sprite(const char* texturePath, const int columns, const int rows)
 
 Sprite::~Sprite()
 {
-	TextureManager::DeleteTexture(m_Texture);
+	m_Texture = nullptr;
 }
 
 void Sprite::SetFrame(int frame)

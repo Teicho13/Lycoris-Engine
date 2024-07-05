@@ -1,4 +1,6 @@
 #include "./managers/TextureManager.h"
+#include "./Managers/ResourceManager.h"
+
 #include <SDL_image.h>
 
 void TextureManager::SetRenderer(SDL_Renderer* renderer)
@@ -9,24 +11,21 @@ void TextureManager::SetRenderer(SDL_Renderer* renderer)
 SDL_Texture* TextureManager::CreateTexture(const char* texturePath)
 {
 	//Create texture
-	SDL_Surface* Surface = IMG_Load(texturePath);
-	SDL_Texture* TempTexture = SDL_CreateTextureFromSurface(m_Renderer, Surface);
-	//Free Surface since we dont need it anymore
-	SDL_FreeSurface(Surface);
+	SDL_Surface* surface = ResourceManager::GetInstance().GetSurface(texturePath);
+	SDL_Texture* TempTexture = ResourceManager::GetInstance().GetTexture(texturePath);
+
 	return TempTexture;
 }
 
 SDL_Texture* TextureManager::CreateTexture(const char* texturePath, int& imageWidth, int& imageHeight)
 {
 	//Create texture
-	SDL_Surface* Surface = IMG_Load(texturePath);
-	SDL_Texture* TempTexture = SDL_CreateTextureFromSurface(m_Renderer, Surface);
+	SDL_Surface* surface = ResourceManager::GetInstance().GetSurface(texturePath);
+	SDL_Texture* TempTexture = ResourceManager::GetInstance().GetTexture(texturePath);
 
-	imageWidth = Surface->w;
-	imageHeight = Surface->h;
+	imageWidth = surface->w;
+	imageHeight = surface->h;
 
-	//Free Surface since we dont need it anymore
-	SDL_FreeSurface(Surface);
 	return TempTexture;
 }
 

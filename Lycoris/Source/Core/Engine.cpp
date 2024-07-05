@@ -9,6 +9,7 @@
 
 #include "./Managers/TextureManager.h"
 #include "./Managers/GameStateManager.h"
+#include "./Managers/ResourceManager.h"
 
 DeltaTime dt;
 GameStateManager stateManager;
@@ -28,6 +29,8 @@ Engine::Engine(bool isFullscreen)
 
 	//Create renderer for SDL and set default background color
 	m_Renderer = SDL_CreateRenderer(m_Window, -1, 0);
+	ResourceManager::GetInstance().SetRenderer(m_Renderer);
+
 	SDL_SetRenderDrawColor(m_Renderer, 27, 146, 214, 255);
 
 	//Pointer to keyboard button states
