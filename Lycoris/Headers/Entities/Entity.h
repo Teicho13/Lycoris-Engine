@@ -27,6 +27,14 @@ public:
 	int GetWidth() const;
 	int GetHeight() const;
 
+	void Animate() const;
+
+	void SetIsAnimated(bool value);
+	void SetFrameDelay(int delay);
+
+	bool GetIsAnimated() const;
+	int GetFrameDelay() const;
+
 	Sprite* GetSprite() const;
 
 private:
@@ -36,4 +44,8 @@ private:
 	float m_PosY = 0.f;
 	int m_Width = 0;
 	int m_Height = 0;
+
+	bool m_IsAnimated = false;
+	//Delay in ms
+	int m_FrameDelay = 100;
 };

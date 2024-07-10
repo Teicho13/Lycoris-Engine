@@ -1,6 +1,8 @@
 #include <SDL_rect.h>
+#include <SDL_timer.h>
 
 #include "./Entities/Entity.h"
+
 #include "./Core/Sprite.h"
 #include "./Managers/TextureManager.h"
 
@@ -78,6 +80,45 @@ int Entity::GetWidth() const
 int Entity::GetHeight() const
 {
 	return m_Height;
+}
+
+void Entity::Animate() const
+{
+	if(GetIsAnimated())
+	{
+		//Default to 1 if no more than 1 frame is present
+		int frames = GetSprite()->GetFrames();
+		if (frames <= 0)
+			frames = 1;
+
+		//Set new frame after every delay
+		GetSprite()->SetFrame(static_cast<int>((SDL_GetTicks() / GetFrameDelay()) % frames));
+	}
+}
+
+void Entity::SetIsAnimated(bool value)
+{
+	m_IsAnimated = value;
+}
+
+//Sets delay between frames in ms
+void Entity::SetFrameDelay(int delay)
+{
+	if (delay <= 0)
+		delay = 1;
+
+	m_FrameDelay = delay;
+}
+
+bool Entity::GetIsAnimated() const
+{
+	return m_IsAnimated;
+}
+
+//Returns delay between each frame in ms
+int Entity::GetFrameDelay() const
+{
+	return m_FrameDelay;
 }
 
 Sprite* Entity::GetSprite() const
