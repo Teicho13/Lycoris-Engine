@@ -16,7 +16,7 @@ Player::Player(const char* texturePath)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
-	SetIsAnimated(true);
+	SetIsAnimated(false);
 	SetFrameDelay(100);
 }
 
@@ -25,7 +25,7 @@ Player::Player(const char* texturePath, const int columns, const int rows)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
-	SetIsAnimated(true);
+	SetIsAnimated(false);
 	SetFrameDelay(100);
 }
 
