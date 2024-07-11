@@ -83,6 +83,7 @@
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Main.cpp" />
     <ClCompile Include="Source\Core\Sprite.cpp" />
+    <ClCompile Include="Source\Managers\EnemyManager.cpp" />
     <ClCompile Include="Source\Managers\ProjectileManager.cpp" />
     <ClCompile Include="Source\Managers\ResourceManager.cpp" />
     <ClCompile Include="Source\R-Type\Entities\Bullet.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="Headers\Core\Utility\KeyStates.h" />
     <ClInclude Include="Headers\Core\Sprite.h" />
     <ClInclude Include="Headers\Entities\Entity.h" />
+    <ClInclude Include="Headers\Managers\EnemyManager.h" />
     <ClInclude Include="Headers\Managers\GameStateManager.h" />
     <ClInclude Include="Headers\Managers\ProjectileManager.h" />
     <ClInclude Include="Headers\Managers\ResourceManager.h" />

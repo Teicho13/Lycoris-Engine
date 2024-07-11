@@ -13,7 +13,7 @@ public:
 
 	void Update(float deltaTime);
 	void BulletCollisionCheck(const Map& map, const float offsetX) const;
-	void Render() const;
+	void Draw() const;
 	void ClearProjectiles();
 
 

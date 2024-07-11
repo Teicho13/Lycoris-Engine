@@ -5,6 +5,7 @@
 #include "./Core/Sprite.h"
 #include "./Managers/TextureManager.h"
 #include "./Managers/ProjectileManager.h"
+#include "./Managers/EnemyManager.h"
 #include "./R-Type/Entities/Player.h"
 #include "./R-Type/Entities/Bullet.h"
 #include "./R-Type/Entities/Enemies/Patapata.h"
@@ -15,6 +16,7 @@
 PlayState PlayState::m_PlayState;
 
 ProjectileManager projectileManager;
+EnemyManager enemyManager;
 
 Player* player;
 Camera camera;
@@ -26,9 +28,12 @@ void PlayState::Init(GameStateManager* manager)
 	player = new Player("Assets/Games/R-Type/Textures/Player/Player.png",5,1);
 	player->GetSprite()->SetFrame(2);
 
-	enemy = new Patapata("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1);
-	enemy->SetPosX(50);
-	enemy->SetPosY(50);
+	auto enemy = std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1);
+	enemy->SetPosX(100.f);
+	enemy->SetPosY(100.f);
+
+	enemyManager.AddEntity(std::move(enemy));
+	enemyManager.AddEntity(std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1));
 
 	m_Level01 = new Map("./Assets/Games/R-Type/MapData/Level01.csv", "Assets/Games/R-Type/Textures/Maps/Level01Tiles64.png", 22, 20);
 
@@ -45,7 +50,7 @@ void PlayState::Tick(GameStateManager* manager, float deltaTime)
 	camera.MoveCamera(deltaTime);
 	projectileManager.Update(deltaTime);
 	projectileManager.BulletCollisionCheck(*m_Level01, camera.GetPosX());
-	enemy->Update(deltaTime);
+	enemyManager.Update(deltaTime);
 }
 
 void PlayState::Shutdown()
@@ -54,15 +59,15 @@ void PlayState::Shutdown()
 	camera.ResetPosition();
 	delete player;
 	delete m_Level01;
-	delete enemy;
+	//delete enemy;
 }
 
 void PlayState::Render(GameStateManager* manager)
 {
 	m_Level01->DrawMap(camera);
 	player->Draw();
-	projectileManager.Render();
-	enemy->Draw();
+	projectileManager.Draw();
+	enemyManager.Draw();
 	//TextureManager::RenderBox(player->GetPosX(), player->GetPosY(), player->GetWidth(), player->GetHeight());
 }
 

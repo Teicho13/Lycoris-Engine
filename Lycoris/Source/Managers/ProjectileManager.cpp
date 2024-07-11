@@ -41,7 +41,7 @@ void ProjectileManager::BulletCollisionCheck(const Map& map, const float offsetX
 	}
 }
 
-void ProjectileManager::Render() const
+void ProjectileManager::Draw() const
 {
 	for (const auto& projectile : m_Projectiles)
 	{
