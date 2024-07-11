@@ -8,6 +8,7 @@ public:
 
 	Entity(const char* texturePath);
 	Entity(const char* texturePath, const int columns, const int rows);
+	Entity(const char* texturePath, const int columns, const int rows, float posX, float posY);
 
 	virtual ~Entity() = default;
 

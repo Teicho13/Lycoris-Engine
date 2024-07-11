@@ -12,6 +12,8 @@ Entity::Entity(const char* texturePath)
 	m_Sprite.reset(new Sprite(texturePath));
 	m_Width = m_Sprite->GetWidth();
 	m_Height = m_Sprite->GetHeight();
+	m_PosX = 0.f;
+	m_PosY = 0.f;
 }
 
 Entity::Entity(const char* texturePath, const int columns, const int rows)
@@ -19,6 +21,17 @@ Entity::Entity(const char* texturePath, const int columns, const int rows)
 	m_Sprite.reset(new Sprite(texturePath,columns,rows));
 	m_Width = m_Sprite->GetWidth();
 	m_Height = m_Sprite->GetHeight();
+	m_PosX = 0.f;
+	m_PosY = 0.f;
+}
+
+Entity::Entity(const char* texturePath, const int columns, const int rows, float posX, float posY)
+{
+	m_Sprite.reset(new Sprite(texturePath, columns, rows));
+	m_Width = m_Sprite->GetWidth();
+	m_Height = m_Sprite->GetHeight();
+	m_PosX = posX;
+	m_PosY = posY;
 }
 
 void Entity::Draw() const

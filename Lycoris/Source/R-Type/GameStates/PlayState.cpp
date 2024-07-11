@@ -3,7 +3,6 @@
 #include <iostream>
 #include <SDL_events.h>
 #include "./Core/Sprite.h"
-#include "./Managers/TextureManager.h"
 #include "./Managers/ProjectileManager.h"
 #include "./Managers/EnemyManager.h"
 #include "./R-Type/Entities/Player.h"
@@ -21,19 +20,12 @@ EnemyManager enemyManager;
 Player* player;
 Camera camera;
 
-Patapata* enemy;
-
 void PlayState::Init(GameStateManager* manager)
 {
 	player = new Player("Assets/Games/R-Type/Textures/Player/Player.png",5,1);
 	player->GetSprite()->SetFrame(2);
 
-	auto enemy = std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1);
-	enemy->SetPosX(100.f);
-	enemy->SetPosY(100.f);
-
-	enemyManager.AddEntity(std::move(enemy));
-	enemyManager.AddEntity(std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1));
+	enemyManager.AddEntity(std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1,1400.f,60.f));
 
 	m_Level01 = new Map("./Assets/Games/R-Type/MapData/Level01.csv", "Assets/Games/R-Type/Textures/Maps/Level01Tiles64.png", 22, 20);
 
