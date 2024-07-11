@@ -21,6 +21,11 @@ public:
 	void SetWidth(int width);
 	void SetHeight(int height);
 
+	void SetCanDie();
+	void Die();
+
+	bool ShouldRemove() const;
+
 	float GetPosX() const;
 	float GetPosY() const;
 	void GetPosXY(float& posX, float& posY) const;
@@ -45,6 +50,9 @@ private:
 	float m_PosY = 0.f;
 	int m_Width = 0;
 	int m_Height = 0;
+
+	bool m_ShouldDie = false;
+	bool m_CanRemove = false;
 
 	bool m_IsAnimated = false;
 	//Delay in ms

@@ -69,6 +69,25 @@ void Entity::SetHeight(int height)
 	m_Height = height;
 }
 
+void Entity::SetCanDie()
+{
+	m_ShouldDie = true;
+
+	//Do Animation here first
+
+	Die();
+}
+
+void Entity::Die()
+{
+	m_CanRemove = true;
+}
+
+bool Entity::ShouldRemove() const
+{
+	return m_CanRemove;
+}
+
 float Entity::GetPosX() const
 {
 	return m_PosX;

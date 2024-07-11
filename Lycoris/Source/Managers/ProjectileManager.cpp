@@ -1,10 +1,13 @@
 #include "./Managers/ProjectileManager.h"
 
+#include <iostream>
+
 #include "./R-Type/Entities/Projectile.h"
 #include "./R-Type/Entities/Bullet.h"
 #include "./R-Type/Entities/Player.h"
 
 #include "./R-Type/Map/Map.h"
+#include "./Managers/EnemyManager.h"
 
 void ProjectileManager::Update(float deltaTime)
 {
@@ -12,9 +15,9 @@ void ProjectileManager::Update(float deltaTime)
 	{
 		if(m_Projectiles[i]->ShouldRemove())
 		{
-			m_Projectiles.erase(m_Projectiles.begin() + i);
+			/*m_Projectiles.erase(m_Projectiles.begin() + i);
 			i--;
-			continue;
+			continue;*/
 		}
 
 		m_Projectiles[i]->Update(deltaTime);
@@ -37,6 +40,17 @@ void ProjectileManager::BulletCollisionCheck(const Map& map, const float offsetX
 		if(map.HasTileCollision(posX, posX2, posY, posY2))
 		{
 			bullet->SetCanDestroy();
+		}
+	}
+}
+
+void ProjectileManager::BulletEnemyCheck(EnemyManager& em, const float offsetX) const
+{
+	for (auto& element : m_Projectiles)
+	{
+		if(em.CheckBulletCollision(element.get()))
+		{
+			element->SetCanDestroy();
 		}
 	}
 }
