@@ -20,6 +20,9 @@ public:
 
 	void GetSourceRec(SDL_Rect &rec) const;
 
+	void ChangeTexture(const char* texturePath);
+	void ResetTexture(const char* texturePath, const int columns, const int rows);
+
 private:
 	void CalculateSizeAndFrames(int columns, int rows);
 

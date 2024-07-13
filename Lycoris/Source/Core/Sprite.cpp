@@ -86,6 +86,22 @@ void Sprite::GetSourceRec(SDL_Rect& rec) const
 	rec.h = (m_SpriteHeight);
 }
 
+//Changes current sprite's texture
+//#Note it does not change the width,height or frames
+void Sprite::ChangeTexture(const char* texturePath)
+{
+	m_Texture = TextureManager::CreateTexture(texturePath);
+}
+
+//Changes current sprite's texture
+//It will also reset width,height,frames
+void Sprite::ResetTexture(const char* texturePath, const int columns, const int rows)
+{
+	m_Texture = TextureManager::CreateTexture(texturePath, m_SpriteWidth, m_SpriteHeight);
+	CalculateSizeAndFrames(columns, rows);
+	m_CurrentFrame = 0;
+}
+
 
 //Calculate correct sprite size based on the columns and rows
 //Calculate Frames based on the columns and rows

@@ -90,6 +90,10 @@ void PlayState::HandleEvents(GameStateManager* manager)
 			{
 				projectileManager.AddBullet(player);
 			}
+			if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				player->GetSprite()->ChangeTexture("Assets/Games/R-Type/Textures/Player/PlayerCopy.png");
+			}
 			break;
 		}
 	}
