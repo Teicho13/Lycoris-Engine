@@ -15,9 +15,9 @@ void ProjectileManager::Update(float deltaTime)
 	{
 		if(m_Projectiles[i]->ShouldRemove())
 		{
-			/*m_Projectiles.erase(m_Projectiles.begin() + i);
+			m_Projectiles.erase(m_Projectiles.begin() + i);
 			i--;
-			continue;*/
+			continue;
 		}
 
 		m_Projectiles[i]->Update(deltaTime);

@@ -41,6 +41,8 @@ bool EnemyManager::CheckBulletCollision(Projectile* bullet)
 
 		return false;
 	}
+
+	return false;
 }
 
 void EnemyManager::AddEntity(std::unique_ptr<Entity> entity)
