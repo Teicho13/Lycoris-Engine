@@ -1,6 +1,7 @@
 #include "./R-Type/Entities/Player.h"
 
 #include <iostream>
+#include <SDL_timer.h>
 
 #include "./Core/Sprite.h"
 
@@ -16,8 +17,6 @@ Player::Player(const char* texturePath)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
-	SetIsAnimated(false);
-	SetFrameDelay(100);
 }
 
 Player::Player(const char* texturePath, const int columns, const int rows)
@@ -25,16 +24,12 @@ Player::Player(const char* texturePath, const int columns, const int rows)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
-	SetIsAnimated(false);
-	SetFrameDelay(100);
 }
 
 void Player::Update(float deltaTime)
 {
 	HandleMovement(deltaTime);
 	HandleBoundChecks();
-
-	Animate();
 }
 
 bool Player::HandleTileCollision(Map* map) const

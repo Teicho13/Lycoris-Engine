@@ -92,7 +92,7 @@ void PlayState::HandleEvents(GameStateManager* manager)
 			}
 			if (event.button.button == SDL_BUTTON_RIGHT)
 			{
-				player->GetSprite()->ChangeTexture("Assets/Games/R-Type/Textures/Player/PlayerCopy.png");
+				player->GetSprite()->ChangeTexture("Assets/Games/R-Type/Textures/Player/PlayerAlt.png");
 			}
 			break;
 		}

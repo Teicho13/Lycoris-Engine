@@ -1,20 +1,19 @@
 #include "./R-Type/Entities/Enemies/Patapata.h"
 
+#include <iostream>
 #include <SDL_timer.h>
 #include "./Core/Sprite.h"
 
 Patapata::Patapata(const char* texturePath, const int columns, const int rows)
 	: Entity(texturePath, columns, rows)
 {
-	SetIsAnimated(true);
-	SetFrameDelay(100);
+	GetAnimationComponent().Play();
 }
 
 Patapata::Patapata(const char* texturePath, const int columns, const int rows, float posX, float posY)
 	: Entity(texturePath, columns, rows,posX,posY)
 {
-	SetIsAnimated(true);
-	SetFrameDelay(100);
+	GetAnimationComponent().Play();
 	m_StartX = posX;
 	m_StartY = posY;
 }
@@ -23,6 +22,7 @@ void Patapata::Update(float deltaTime)
 {
 	Animate();
 	Move(deltaTime);
+	Animate();
 }
 
 void Patapata::Move(float dt)

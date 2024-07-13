@@ -114,6 +114,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Core\Animation.h" />
     <ClInclude Include="Headers\Core\Utility\AppGlobals.h" />
     <ClInclude Include="Headers\Core\Utility\DeltaTime.h" />
     <ClInclude Include="Headers\Core\Engine.h" />

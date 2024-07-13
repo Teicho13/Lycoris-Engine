@@ -21,7 +21,6 @@ public:
 
 	void SetMovementSpeed(float amount);
 	float GetMovementSpeed() const;
-
 private:
 	float m_MoveSpeed = 500.f;
 	Camera* m_CamerRef = nullptr;

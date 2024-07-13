@@ -14,6 +14,8 @@ Entity::Entity(const char* texturePath)
 	m_Height = m_Sprite->GetHeight();
 	m_PosX = 0.f;
 	m_PosY = 0.f;
+	m_Animation.Initialize(m_Sprite->GetFrames());
+	m_Animation.SetFrameDelay(100);
 }
 
 Entity::Entity(const char* texturePath, const int columns, const int rows)
@@ -23,6 +25,8 @@ Entity::Entity(const char* texturePath, const int columns, const int rows)
 	m_Height = m_Sprite->GetHeight();
 	m_PosX = 0.f;
 	m_PosY = 0.f;
+	m_Animation.Initialize(m_Sprite->GetFrames());
+	m_Animation.SetFrameDelay(100);
 }
 
 Entity::Entity(const char* texturePath, const int columns, const int rows, float posX, float posY)
@@ -32,6 +36,8 @@ Entity::Entity(const char* texturePath, const int columns, const int rows, float
 	m_Height = m_Sprite->GetHeight();
 	m_PosX = posX;
 	m_PosY = posY;
+	m_Animation.Initialize(m_Sprite->GetFrames());
+	m_Animation.SetFrameDelay(100);
 }
 
 void Entity::Draw() const
@@ -114,32 +120,24 @@ int Entity::GetHeight() const
 	return m_Height;
 }
 
-void Entity::Animate() const
+void Entity::Animate()
 {
-	if(GetIsAnimated())
-	{
-		//Default to 1 if no more than 1 frame is present
-		int frames = GetSprite()->GetFrames();
-		if (frames <= 0)
-			frames = 1;
-
-		//Set new frame after every delay
-		GetSprite()->SetFrame(static_cast<int>((SDL_GetTicks() / GetFrameDelay()) % frames));
-	}
-}
-
-void Entity::SetIsAnimated(bool value)
-{
-	m_IsAnimated = value;
+	m_Animation.Update();
+	GetSprite()->SetFrame(m_Animation.GetCurrentFrame());
 }
 
 //Sets delay between frames in ms
 void Entity::SetFrameDelay(int delay)
 {
 	if (delay <= 0)
-		delay = 1;
+		delay = 100;
 
-	m_FrameDelay = delay;
+	m_Animation.SetFrameDelay(delay);
+}
+
+Animation& Entity::GetAnimationComponent()
+{
+	return m_Animation;
 }
 
 bool Entity::GetIsAnimated() const

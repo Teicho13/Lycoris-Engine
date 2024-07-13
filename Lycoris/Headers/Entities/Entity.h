@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 
+#include "Core/Animation.h"
+
 class Sprite;
 class Entity
 {
@@ -33,10 +35,9 @@ public:
 	int GetWidth() const;
 	int GetHeight() const;
 
-	void Animate() const;
-
-	void SetIsAnimated(bool value);
+	void Animate();
 	void SetFrameDelay(int delay);
+	Animation& GetAnimationComponent();
 
 	bool GetIsAnimated() const;
 	int GetFrameDelay() const;
@@ -57,4 +58,6 @@ private:
 	bool m_IsAnimated = false;
 	//Delay in ms
 	int m_FrameDelay = 100;
+
+	Animation m_Animation;
 };
