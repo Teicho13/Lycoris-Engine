@@ -73,29 +73,48 @@ void PlayState::HandleEvents(GameStateManager* manager)
 		switch (event.type)
 		{
 			//Window "X" is clicked
-		case SDL_QUIT:
-			manager->Shutdown();
+			case SDL_QUIT:
+				manager->Shutdown();
 			break;
 
 			//key is pressed
-		case SDL_KEYDOWN:
-			//If Escape is clicked exit out
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-			{
-				manager->Shutdown();
-				return;
-			}
-		case SDL_MOUSEBUTTONDOWN:
-			if (event.button.button == SDL_BUTTON_LEFT)
-			{
-				projectileManager.AddBullet(player);
-			}
-			if (event.button.button == SDL_BUTTON_RIGHT)
-			{
-				player->GetSprite()->ChangeTexture("Assets/Games/R-Type/Textures/Player/PlayerAlt.png");
-			}
+			case SDL_KEYDOWN:
+				//If Escape is clicked exit out
+				if (event.key.keysym.sym == SDLK_ESCAPE)
+				{
+					manager->Shutdown();
+					return;
+				}
+			break;
+
+			case SDL_MOUSEBUTTONDOWN:
+				if (event.button.button == SDL_BUTTON_LEFT)
+				{
+					player->m_InputHeld = true;
+				}
+				if (event.button.button == SDL_BUTTON_RIGHT)
+				{
+					player->GetSprite()->ChangeTexture("Assets/Games/R-Type/Textures/Player/PlayerAlt.png");
+				}
+			break;
+
+			case SDL_MOUSEBUTTONUP:
+				if (event.button.button == SDL_BUTTON_LEFT)
+				{
+					player->m_InputHeld = false;
+					if(!player->FullyCharged())
+					{
+						//TODO: Replace with Charged Bullet type
+						projectileManager.AddBullet(player);
+					}
+					else
+					{
+						projectileManager.AddBullet(player);
+					}
+				}
 			break;
 		}
+		
 	}
 
 }

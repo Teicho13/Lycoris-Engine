@@ -30,6 +30,7 @@ void Player::Update(float deltaTime)
 {
 	HandleMovement(deltaTime);
 	HandleBoundChecks();
+	ChargeBullet(deltaTime);
 }
 
 bool Player::HandleTileCollision(Map* map) const
@@ -119,4 +120,48 @@ void Player::SetMovementSpeed(float amount)
 float Player::GetMovementSpeed() const
 {
 	return m_MoveSpeed;
+}
+
+void Player::ChargeBullet(float dt)
+{
+	if(m_InputHeld)
+	{
+		if(!m_Charged)
+		{
+			m_Charge += (m_ChargeSpeed * dt);
+			if(m_Charge >= 100.f)
+			{
+				m_Charged = true;
+				m_Charge = 100.f;
+				std::cout << "Fully Charged !" << "\n";
+			}
+		}
+	}
+	else
+	{
+		if(m_Charged)
+		{
+			m_Charge = 0.f;
+			m_Charged = false;
+			std::cout << "Charge Reset !" << "\n";
+		}
+		else
+		{
+			if(m_Charge > 0.f)
+			{
+				m_Charge -= (m_ChargeSpeed * dt);
+				if (m_Charge <= 0.f)
+				{
+					m_Charge = 0.f;
+					std::cout << "Empty Charge !" << "\n";
+				}
+			}
+			
+		}
+	}
+}
+
+bool Player::FullyCharged() const
+{
+	return m_Charged;
 }
