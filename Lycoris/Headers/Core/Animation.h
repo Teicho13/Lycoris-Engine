@@ -1,34 +1,24 @@
 #pragma once
 #include <SDL_timer.h>
 
+class VisualEffect;
 struct Animation
 {
-	void Initialize(int maxFrame) { if (maxFrame <= 0) { m_MaxFrames = 1; } m_MaxFrames = maxFrame; }
+	void Initialize(int maxFrame, VisualEffect* vfx = nullptr);
 
-	void SetLooped(bool val) { m_LoopAnimation = val; }
+	void SetLooped(bool val);
 
 	//Set Delay between each frame (in ms)
-	void SetFrameDelay(int val) { m_FrameDelay = val; }
+	void SetFrameDelay(int val);
 
-	void Play() { m_IsPlaying = true; }
-	void Stop() { m_IsPlaying = false; }
-	void ResetAnimation() { m_CurrentFrame = 0; }
+	void Play();
+	void Stop();
+	void ResetAnimation();
 
-	void Update()
-	{
-		if(m_IsPlaying)
-		{
-			m_CurrentFrame = static_cast<int>((SDL_GetTicks() / m_FrameDelay) % m_MaxFrames);
+	void Update();
 
-			if (!m_LoopAnimation && m_CurrentFrame == (m_MaxFrames - 1))
-			{
-				Stop();
-			}
-		}
-	}
-
-	bool IsLooped() const { return m_LoopAnimation; }
-	int GetCurrentFrame() const { return m_CurrentFrame; }
+	bool IsLooped() const;
+	int GetCurrentFrame() const;
 
 private:
 	bool m_IsPlaying = false;
@@ -39,4 +29,6 @@ private:
 
 	int m_CurrentFrame = 0;
 	int m_MaxFrames = 0;
+
+	VisualEffect* m_VFX = nullptr;
 };

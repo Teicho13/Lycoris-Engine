@@ -11,6 +11,8 @@
 #include "./R-Type/Map/Camera.h"
 #include "./R-Type/Map/Map.h"
 
+#include "./Extras/VisualEffect.h"
+
 
 PlayState PlayState::m_PlayState;
 
@@ -19,6 +21,8 @@ EnemyManager enemyManager;
 
 Player* player;
 Camera camera;
+
+VisualEffect* testVFX = nullptr;
 
 void PlayState::Init(GameStateManager* manager)
 {
@@ -30,6 +34,8 @@ void PlayState::Init(GameStateManager* manager)
 	m_Level01 = new Map("./Assets/Games/R-Type/MapData/Level01.csv", "Assets/Games/R-Type/Textures/Maps/Level01Tiles64.png", 22, 20);
 
 	player->SetCamera(&camera);
+
+	testVFX = new VisualEffect("Assets/Games/R-Type/Textures/Player/Charging.png", 8, 1, 50.f,50.f, false);
 }
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
@@ -44,6 +50,7 @@ void PlayState::Tick(GameStateManager* manager, float deltaTime)
 	projectileManager.BulletCollisionCheck(*m_Level01, camera.GetPosX());
 	projectileManager.BulletEnemyCheck(enemyManager, camera.GetPosX());
 	enemyManager.Update(deltaTime);
+	testVFX->Update();
 }
 
 void PlayState::Shutdown()
@@ -61,6 +68,7 @@ void PlayState::Render(GameStateManager* manager)
 	player->Draw();
 	projectileManager.Draw();
 	enemyManager.Draw();
+	testVFX->Draw();
 	//TextureManager::RenderBox(player->GetPosX(), player->GetPosY(), player->GetWidth(), player->GetHeight());
 }
 
