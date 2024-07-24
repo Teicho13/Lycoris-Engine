@@ -6,6 +6,8 @@
 #include "./Core/Sprite.h"
 
 #include "./R-Type/Map/Map.h"
+
+#include "Managers/EnemyManager.h"
 #include "./R-Type/Map/Tile.h"
 #include "./R-Type/Map/Camera.h"
 
@@ -81,6 +83,61 @@ void Map::CreateTiles(const char* textureMapPath)
 	{
 		m_CanRender = true;
 	}
+}
+
+void Map::CreateEnemies(const char* EnemyMapPath, EnemyManager& enemyManager)
+{
+	//Create temporary files for handling strings
+	std::ifstream file;
+	std::string line;
+	std::string final;
+
+	//Open Texture Map
+	file.open(EnemyMapPath);
+
+
+	//Create string with all numbers
+
+	while (std::getline(file, line))
+	{
+		final.append(line);
+		final.append(",");
+	}
+
+	int type;
+	std::string temp;
+	int itX = 0;
+	int itY = 0;
+	std::istringstream str_buf {final};
+
+	//Loop over all numbers and create tiles based on it.
+	while (str_buf >> type)
+	{
+		switch (type)
+		{
+			case 1:
+				enemyManager.AddEntity(m_EnemyType::PataPata,itX,itY);
+				break;
+		}
+
+		if (itX < (m_MapColumns - 1))
+		{
+			itX++;
+		}
+		else
+		{
+			itX = 0;
+			if (itY < m_MapRows)
+			{
+				itY++;
+			}
+		}
+
+		if ((str_buf >> std::ws).peek() == ',')
+			str_buf.ignore();
+	}
+
+	file.close();
 }
 
 void Map::DrawMap(Camera& cam) const

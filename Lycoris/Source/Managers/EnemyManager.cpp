@@ -1,6 +1,7 @@
 #include "./Managers/EnemyManager.h"
 #include "./Entities/Entity.h"
 #include "./R-Type/Entities/Projectile.h"
+#include "R-Type/Entities/Enemies/Patapata.h"
 
 void EnemyManager::Update(float deltaTime)
 {
@@ -43,6 +44,20 @@ bool EnemyManager::CheckBulletCollision(Projectile* bullet)
 	}
 
 	return false;
+}
+
+void EnemyManager::AddEntity(m_EnemyType type, int posX, int posY)
+{
+	switch (type)
+	{
+	case m_EnemyType::PataPata:
+		AddEntity(std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1,static_cast<float>(posX * 64), static_cast<float>(posY * 64)));
+		break;
+
+	default:
+		AddEntity(std::make_unique<Patapata>("Assets/Games/R-Type/Textures/Enemies/PataPata.png", 6, 1, static_cast<float>(posX * 64), static_cast<float>(posY * 64)));
+		break;
+	}
 }
 
 void EnemyManager::AddEntity(std::unique_ptr<Entity> entity)

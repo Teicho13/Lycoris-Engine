@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 
+class EnemyManager;
 class Tile;
 class Sprite;
 class Camera;
@@ -13,6 +14,7 @@ public:
 	~Map();
 
 	void CreateTiles(const char* textureMapPath);
+	void CreateEnemies(const char* EnemyMapPath, EnemyManager& enemyManager);
 	void DrawMap(Camera& cam) const;
 	void RemoveTiles() const;
 
