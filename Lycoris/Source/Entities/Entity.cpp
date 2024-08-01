@@ -3,6 +3,8 @@
 
 #include "./Entities/Entity.h"
 
+#include <iostream>
+
 #include "./Core/Sprite.h"
 #include "./Managers/TextureManager.h"
 
@@ -92,6 +94,15 @@ void Entity::Die()
 bool Entity::ShouldRemove() const
 {
 	return m_CanRemove;
+}
+
+bool Entity::IsOutBounds()
+{
+	if(GetPosX() + static_cast<float>(GetWidth()) + 1.f <= 0.f)
+	{
+		return true;
+	}
+	return false;
 }
 
 float Entity::GetPosX() const

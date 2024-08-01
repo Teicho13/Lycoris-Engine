@@ -28,6 +28,8 @@ public:
 
 	bool ShouldRemove() const;
 
+	bool IsOutBounds();
+
 	float GetPosX() const;
 	float GetPosY() const;
 	void GetPosXY(float& posX, float& posY) const;

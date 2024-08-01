@@ -36,7 +36,7 @@ void PlayState::Init(GameStateManager* manager)
 
 	player->SetCamera(&camera);
 
-	testVFX = new VisualEffect("Assets/Games/R-Type/Textures/Player/Charging.png", 8, 1, 50.f,50.f, false);
+	testVFX = new VisualEffect("Assets/Games/R-Type/Textures/Player/Charging.png", 8, 1, 50.f,50.f, true);
 }
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
