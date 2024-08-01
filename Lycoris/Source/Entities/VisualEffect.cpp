@@ -50,7 +50,22 @@ void VisualEffect::Update()
 	GetSprite()->SetFrame(m_Animation.GetCurrentFrame());
 }
 
+void VisualEffect::SetPosX(float newX)
+{
+	m_PosX = newX;
+}
+
+void VisualEffect::SetPosY(float newY)
+{
+	m_PosY = newY;
+}
+
 Sprite* VisualEffect::GetSprite() const
 {
 	return m_Sprite.get();
+}
+
+Animation* VisualEffect::GetAnimation()
+{
+	return &m_Animation;
 }

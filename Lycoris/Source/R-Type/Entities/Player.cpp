@@ -11,12 +11,16 @@
 #include "R-Type/Map/Map.h"
 #include "R-Type/Map/Tile.h"
 
+#include "./Extras/VisualEffect.h"
+
 
 Player::Player(const char* texturePath)
 	: Entity(texturePath)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
+
+	m_ChargeVFX = std::make_unique<VisualEffect>("Assets/Games/R-Type/Textures/Player/Charging.png", 8, 1, 50.f, 50.f, true);
 }
 
 Player::Player(const char* texturePath, const int columns, const int rows)
@@ -24,6 +28,18 @@ Player::Player(const char* texturePath, const int columns, const int rows)
 {
 	SetWidth(GetWidth() - 10);
 	SetHeight(GetHeight() - 10);
+
+	m_ChargeVFX = std::make_unique<VisualEffect>("Assets/Games/R-Type/Textures/Player/Charging.png", 8, 1, 50.f, 50.f, true);
+}
+
+void Player::Draw() const
+{
+	Entity::Draw();
+	if(m_InputHeld && m_Charge > 10.f)
+	{
+		m_ChargeVFX->Draw();
+	}
+	
 }
 
 void Player::Update(float deltaTime)
@@ -31,6 +47,10 @@ void Player::Update(float deltaTime)
 	HandleMovement(deltaTime);
 	HandleBoundChecks();
 	ChargeBullet(deltaTime);
+	if(m_InputHeld)
+	{
+		m_ChargeVFX->Update();
+	}
 }
 
 bool Player::HandleTileCollision(Map* map) const
@@ -87,6 +107,9 @@ void Player::HandleMovement(float dt)
 	{
 		SetPosY(GetPosY() + m_MoveSpeed * dt);
 	}
+
+	m_ChargeVFX->SetPosX(GetPosX() + static_cast<float>(GetWidth()) + m_ChargePosXOffset);
+	m_ChargeVFX->SetPosY((GetPosY() + static_cast<float>(GetHeight()) / 2) + m_ChargePosYOffset);
 }
 
 void Player::HandleBoundChecks()
@@ -139,25 +162,13 @@ void Player::ChargeBullet(float dt)
 	}
 	else
 	{
-		if(m_Charged)
+		if(m_Charged || m_Charge > 0.f)
 		{
 			m_Charge = 0.f;
 			m_Charged = false;
 			std::cout << "Charge Reset !" << "\n";
 		}
-		else
-		{
-			if(m_Charge > 0.f)
-			{
-				m_Charge -= (m_ChargeSpeed * dt);
-				if (m_Charge <= 0.f)
-				{
-					m_Charge = 0.f;
-					std::cout << "Empty Charge !" << "\n";
-				}
-			}
-			
-		}
+		m_ChargeVFX->GetAnimation()->ResetAnimation();
 	}
 }
 

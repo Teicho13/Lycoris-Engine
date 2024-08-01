@@ -14,7 +14,7 @@ public:
 
 	virtual ~Entity() = default;
 
-	void Draw() const;
+	virtual void Draw() const;
 	virtual void Update(float deltaTime) = 0;
 
 	void SetPosX(float pos);

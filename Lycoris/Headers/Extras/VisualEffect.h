@@ -11,7 +11,12 @@ public:
 	void Callback();
 	void Draw();
 	void Update();
+
+	void SetPosX(float newX);
+	void SetPosY(float newY);
+
 	Sprite* GetSprite() const;
+	Animation* GetAnimation();
 
 private:
 	Animation m_Animation;

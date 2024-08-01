@@ -3,12 +3,15 @@
 
 class Map;
 class Camera;
+class VisualEffect;
 
 class Player : public Entity
 {
 public:
 	Player(const char* texturePath);
 	Player(const char* texturePath, const int columns, const int rows);
+
+	void Draw() const override;
 
 	void Update(float deltaTime) override;
 	bool HandleTileCollision(Map* map) const;
@@ -32,7 +35,11 @@ private:
 
 	Camera* m_CamerRef = nullptr;
 
+	std::unique_ptr<VisualEffect> m_ChargeVFX = nullptr;
+
 	bool m_Charged = false;
 	float m_Charge = 0;
 	float m_ChargeSpeed = 50;
+	float m_ChargePosXOffset = 10.f;
+	float m_ChargePosYOffset = -5.f;
 };
