@@ -34,12 +34,25 @@ void PlayState::Init(GameStateManager* manager)
 
 void PlayState::Tick(GameStateManager* manager, float deltaTime)
 {
-	player->Update(deltaTime);
-	if(player->HandleTileCollision(m_Level01))
+	if(!player->IsAlive())
 	{
 		manager->ChangeState(m_GameStates::PLAY);
+		return;
 	}
-	camera.MoveCamera(deltaTime);
+	player->Update(deltaTime);
+	if(!player->IsExploding())
+	{
+		if(player->HandleTileCollision(m_Level01))
+		{
+			player->Explode();
+			SDL_Delay(50);
+			return;
+		}
+
+		camera.MoveCamera(deltaTime);
+	}
+	
+	
 	projectileManager.Update(deltaTime);
 	projectileManager.BulletCollisionCheck(*m_Level01, camera.GetPosX());
 	projectileManager.BulletEnemyCheck(enemyManager, camera.GetPosX());
@@ -49,6 +62,7 @@ void PlayState::Tick(GameStateManager* manager, float deltaTime)
 void PlayState::Shutdown()
 {
 	projectileManager.ClearProjectiles();
+	enemyManager.ClearEntities();
 	camera.ResetPosition();
 	delete player;
 	delete m_Level01;
@@ -100,15 +114,18 @@ void PlayState::HandleEvents(GameStateManager* manager)
 			case SDL_MOUSEBUTTONUP:
 				if (event.button.button == SDL_BUTTON_LEFT)
 				{
-					player->m_InputHeld = false;
-					if(!player->FullyCharged())
+					if(!player->IsExploding())
 					{
-						//TODO: Replace with Charged Bullet type
-						projectileManager.AddBullet(player);
-					}
-					else
-					{
-						projectileManager.AddBullet(player);
+						player->m_InputHeld = false;
+						if (!player->FullyCharged())
+						{
+							//TODO: Replace with Charged Bullet type
+							projectileManager.AddBullet(player);
+						}
+						else
+						{
+							projectileManager.AddBullet(player);
+						}
 					}
 				}
 			break;

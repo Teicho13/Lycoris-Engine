@@ -5,10 +5,11 @@
 #include <SDL_rect.h>
 
 #include "./Core/Sprite.h"
+#include "./R-Type/Entities/Player.h"
 
 
 VisualEffect::VisualEffect(const char* texturePath, const int columns, const int rows, float posX, float posY,
-                           bool looping)
+                           bool looping, bool startOn, Player* player)
 {
 	m_Sprite.reset(new Sprite(texturePath, columns, rows));
 	m_Width = m_Sprite->GetWidth();
@@ -19,7 +20,11 @@ VisualEffect::VisualEffect(const char* texturePath, const int columns, const int
 	m_Animation.SetFrameDelay(100);
 	m_Animation.SetLooped(looping);
 	m_Animation.ResetAnimation();
-	m_Animation.Play();
+	if(startOn)
+	{
+		m_Animation.Play();
+	}
+	m_Player = player;
 }
 
 
@@ -27,6 +32,13 @@ VisualEffect::VisualEffect(const char* texturePath, const int columns, const int
 void VisualEffect::Callback()
 {
 	std::cout << "CALLBACK !\n";
+	if(m_Player != nullptr)
+	{
+		if(m_Player->IsExploding())
+		{
+			m_Player->Die();
+		}
+	}
 }
 
 void VisualEffect::Draw()
@@ -68,4 +80,9 @@ Sprite* VisualEffect::GetSprite() const
 Animation* VisualEffect::GetAnimation()
 {
 	return &m_Animation;
+}
+
+void VisualEffect::SetPlayer(Player* player)
+{
+	player = m_Player;
 }

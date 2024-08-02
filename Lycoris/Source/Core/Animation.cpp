@@ -16,9 +16,9 @@ void Animation::Update()
 {
 	if (m_IsPlaying)
 	{
-		m_CurrentFrame = static_cast<int>((SDL_GetTicks() / m_FrameDelay) % m_MaxFrames);
+		m_CurrentFrame = static_cast<int>((SDL_GetTicks() / m_FrameDelay) % m_MaxFrames + 1);
 
-		if (!m_LoopAnimation && m_CurrentFrame == (m_MaxFrames - 1))
+		if (!m_LoopAnimation && m_CurrentFrame == (m_MaxFrames))
 		{
 			Stop();
 		}
